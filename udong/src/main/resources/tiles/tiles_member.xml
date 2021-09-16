@@ -11,8 +11,8 @@
 	<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
 	
-	<definition name="main" extends="base">
+	<definition name="join" extends="base">
 	<put-attribute name="title" value="우리동네 동아리, 우동" />
-	<put-attribute name="body" value="/WEB-INF/views/common/main.jsp"></put-attribute>
+	<put-attribute name="body" value="/WEB-INF/views/member/join.jsp"></put-attribute>
 	</definition>
 </tiles-definitions>
