@@ -2,17 +2,17 @@
 <!DOCTYPE tiles-definitions PUBLIC
 "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
 "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
-
 <tiles-definitions>
-	<definition name="base" template="/WEB-INF/views/common/layout.jsp">
-	<put-attribute name="title" value="" />
-	<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
-	<put-attribute name="body" value=""/>
-	<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
+		<put-attribute name="title" value="/" />
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="side" value="/WEB-INF/views/common/side.jsp" />
+		<put-attribute name="body" value="/" />
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
-	
-	<definition name="join" extends="base">
-	<put-attribute name="title" value="우리동네 동아리, 우동" />
-	<put-attribute name="body" value="/WEB-INF/views/member/join.jsp"></put-attribute>
+	<definition name="main" extends="baseLayout">
+		<put-attribute name="title" value="우리동네 동아리, 우동" />
+		<put-attribute name="body" value="/WEB-INF/views/main.jsp" />
 	</definition>
+
 </tiles-definitions>
