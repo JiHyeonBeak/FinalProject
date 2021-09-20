@@ -14,5 +14,10 @@
 		<put-attribute name="title" value="우리동네 동아리, 우동" />
 		<put-attribute name="body" value="/WEB-INF/views/main.jsp" />
 	</definition>
+	
+	 <definition name="memberForm" extends="baseLayout">
+      <put-attribute name="title" value="우리동네 동아리, 우동" />
+      <put-attribute name="body" value="/WEB-INF/views/member/memberForm.jsp" />
+   </definition>
 
 </tiles-definitions>
