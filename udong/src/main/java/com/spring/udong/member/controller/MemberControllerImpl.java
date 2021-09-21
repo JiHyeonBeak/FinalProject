@@ -1,10 +1,13 @@
 package com.spring.udong.member.controller;
 
+import java.util.Locale;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +22,11 @@ public class MemberControllerImpl implements MemberController{
 	@Autowired
 	MemberVO memberVO;
 	
+	@RequestMapping(value = "join", method = RequestMethod.GET)
+	public String home(Locale locale, Model model) {
+		
+		return "memberForm";
+	}
 	
 	@Override
 	@RequestMapping(value="addMember",method=RequestMethod.GET)
