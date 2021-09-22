@@ -22,20 +22,21 @@ public class MemberControllerImpl implements MemberController{
 	@Autowired
 	MemberVO memberVO;
 	
-	@RequestMapping(value = "join", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		
-		return "memberForm";
+		System.out.println("메인컨트롤러 작동");
+		return "main";
 	}
 	
 	@Override
-	@RequestMapping(value="addMember",method=RequestMethod.GET)
+	@RequestMapping(value="/member/addMember",method=RequestMethod.POST)
 	public ModelAndView addMember(MemberVO memberVO, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
 		int result = 0;
 		result = memberService.addMember(memberVO);
 		ModelAndView mav = new ModelAndView();
+		mav.setViewName("addMember");
 		return mav;
 	}
 
