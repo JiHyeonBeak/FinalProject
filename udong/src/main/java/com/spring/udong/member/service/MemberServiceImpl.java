@@ -22,4 +22,14 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.deleteMember(id);
 	}
 
+	@Override
+	public int updateMember(String id) throws DataAccessException {
+		return memberDAO.updateMember(id);
+	}
+
+	@Override
+	public MemberVO loginMember(MemberVO memberVO) throws DataAccessException {
+		return memberDAO.loginMember(memberVO);
+	}
+
 }

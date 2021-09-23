@@ -1,5 +1,8 @@
 package com.spring.udong.member.vo;
 
+import org.springframework.stereotype.Component;
+
+@Component("memberVO")
 public class MemberVO {
 	private int num;
 	private String id;
@@ -9,6 +12,7 @@ public class MemberVO {
 	private String ph;
 	private String email;
 	private int cnt;
+	
 	public int getNum() {
 		return num;
 	}

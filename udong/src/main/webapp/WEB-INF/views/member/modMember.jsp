@@ -20,7 +20,7 @@
 </style>
 </head>
 <body>
-	<form method="post"   action="${contextPath}/member/modMember.do">
+	<form method="post"   action="${contextPath}/member/modMember">
 	<h1  class="text_center">회원 정보 수정창</h1>
 	<table  align="center">
 	   <tr>
@@ -32,12 +32,16 @@
 	      <td width="400"><input type="password" name="pwd"></td>
 	    </tr>
 	    <tr>
-	       <td width="200"><p align="right">이름</td>
-	       <td width="400"><p><input type="text" name="name"></td>
+	       <td width="200"><p align="right">주소</td>
+	       <td width="400"><p><input type="text" name="address"></td>
 	    </tr>
 	    <tr>
 	       <td width="200"><p align="right">이메일</td>
 	       <td width="400"><p><input type="text" name="email"></td>
+	    </tr>
+	    <tr>
+	       <td width="200"><p align="right">핸드폰 번호</td>
+	       <td width="400"><p><input type="text" name="ph"></td>
 	    </tr>
 	    <tr>
 	       <td width="200"><p>&nbsp;</p></td>

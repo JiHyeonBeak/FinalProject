@@ -15,24 +15,19 @@
    .no-underline{
       text-decoration:none;
    }
+   body{
+   display:inline;
+   margin-right: 200px;
+   }
  </style>
   <meta charset="UTF-8">
   <title>사이드 메뉴</title>
 </head>
-<body>
-	<h1>사이드 메뉴</h1>
-	 <!-- 
+<body>	
 	<h1>
-		<a href="#"  class="no-underline">회원관리</a><br>
-	  <a href="#"  class="no-underline">게시판관리</a><br>
-	  <a href="#"  class="no-underline">상품관리</a><br>
-   </h1> 
-    -->
-	
-	<h1>
-		<a href="${contextPath}/member/listMembers.do"  class="no-underline">회원관리</a><br>
-		<a href=""  class="no-underline">게시판관리</a><br>
-		<a href="#"  class="no-underline">상품관리</a><br>
+		<a href="${contextPath}/member/listMembers.do"  class="no-underline">회원관리</a>
+		<a href=""  class="no-underline">동아리 개설</a>
+		<a href="#"  class="no-underline">동아리 활동</a>
 	</h1>
 	
 </body>

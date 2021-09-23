@@ -15,9 +15,19 @@
 		<put-attribute name="body" value="/WEB-INF/views/main.jsp" />
 	</definition>
 	
-	 <definition name="memberForm" extends="baseLayout">
+	<definition name="join" extends="baseLayout">
       <put-attribute name="title" value="우리동네 동아리, 우동" />
       <put-attribute name="body" value="/WEB-INF/views/member/memberForm.jsp" />
-   </definition>
+    </definition>
+    
+    <definition name="update" extends="baseLayout">
+      <put-attribute name="title" value="우리동네 동아리, 우동" />
+      <put-attribute name="body" value="/WEB-INF/views/member/modMember.jsp" />
+    </definition>
+    
+    <definition name="login" extends="baseLayout">
+      <put-attribute name="title" value="우리동네 동아리, 우동" />
+      <put-attribute name="body" value="/WEB-INF/views/member/loginForm.jsp" />
+    </definition>
 
 </tiles-definitions>

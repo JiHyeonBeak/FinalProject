@@ -22,13 +22,11 @@
          background-color: lightgreen;
       }
       #sidebar-left {
-        width: 15%;
-        height:700px;
+        height:50px;
         padding: 5px;
         margin-right: 5px;
         margin-bottom: 5px;
-        float: left;
-         background-color: yellow;
+        background-color: yellow;
         border: 0px solid #bcbcbc;
         font-size:10px;
       }

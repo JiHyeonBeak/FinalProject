@@ -15,9 +15,9 @@
   </style>
 </head>
 <body>
-<p> e-mail:admin@test.com</p> 
-<p> 회사주소:서울시 강동구</p>
-<p>찾아오는 길:<a href="#">약도</a></p>
+<p> 우리동네 동아리, 우동</p> 
+<p> 이젠아카데미 구리캠퍼스 자바프로그래밍 최종 프로젝트</p>
+<p> 깃허브: <a href="https://github.com/users/JiHyeonBeak/projects/1">Team 2</a></p>
 
 </body>
 </html>

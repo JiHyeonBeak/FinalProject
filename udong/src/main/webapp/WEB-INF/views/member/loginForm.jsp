@@ -24,7 +24,7 @@
 </head>
 
 <body>
-<form name="frmLogin" method="post"  action="${contextPath}/member/login.do">
+<form name="frmLogin" method="post"  action="${contextPath}/member/login">
    <table border="1"  width="80%" align="center" >
       <tr align="center">
          <td>아이디</td>

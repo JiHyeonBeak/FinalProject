@@ -16,9 +16,12 @@
 	</resultMap> 
     
   <insert id="insertMember"  parameterType="memberVO">
+  		<selectKey keyProperty="num" order="BEFORE" resultType="int">
+  			select udong_seq.nextval from dual
+  		</selectKey>
 		<![CDATA[
 		 insert into udong_member(num,id,pwd,name,address,ph,email)
-		 values(udong_seq.nextval,#{id},#{pwd} #{name},#{address},#{ph},#{email})
+		 values(#{num}, #{id}, #{pwd}, #{name}, #{address}, #{ph}, #{email})
 		]]>      
 	</insert>
 	
@@ -27,8 +30,7 @@
      <![CDATA[
 	     update udong_member
 	     set pwd=#{pwd}, address=#{address}, ph=#{ph}, email=#{email}
-	     where
-	     id=#{id}
+	     where id=#{id}
       ]]>      
    </update> 
      
@@ -39,5 +41,12 @@
 	   id=#{id}
 	]]>      
   </delete>
+  
+  <select id="loginMember"  resultType="memberVO"   parameterType="memberVO" >
+	<![CDATA[
+		select * from udong_member	
+		where id=#{id} and pwd=#{pwd}		
+	]]>
+  </select>
 
 </mapper>

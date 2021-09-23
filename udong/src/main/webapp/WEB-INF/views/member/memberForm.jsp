@@ -4,9 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
-<%
-   request.setCharacterEncoding("UTF-8");
-%> 
+<% request.setCharacterEncoding("UTF-8"); %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,8 +17,8 @@
 </style>
 </head>
 <body>
-	<form method="post"   action="${contextPath}addMember">
-	<h1  class="text_center">회원 가입창</h1>
+	<form method="post" action="${contextPath}/member/addMember">
+	<h1  class="text_center">회원 가입</h1>
 	<table  align="center">
 	   <tr>
 	      <td width="200"><p align="right">아이디</td>
@@ -33,6 +31,14 @@
 	    <tr>
 	       <td width="200"><p align="right">이름</td>
 	       <td width="400"><p><input type="text" name="name"></td>
+	    </tr>
+	    <tr>
+	       <td width="200"><p align="right">주소</td>
+	       <td width="400"><p><input type="text" name="address"></td>
+	    </tr>
+	    <tr>
+	       <td width="200"><p align="right">핸드폰번호</td>
+	       <td width="400"><p><input type="text" name="ph"></td>
 	    </tr>
 	    <tr>
 	       <td width="200"><p align="right">이메일</td>
