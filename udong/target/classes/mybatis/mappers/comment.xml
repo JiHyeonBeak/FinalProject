@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.comment">
+	<resultMap id="comResult" type="commentVO">
+		<result property="article_no" column="article_no" />
+		<result property="article_title" column="article_title" />
+		<result property="article_content" column="article_content" />
+		<result property="article_like" column="article_like" />
+		<result property="article_hate" column="article_hate" />
+	</resultMap> 
+	
+	<select id="commentList" resultMap="comResult"   >
+    <![CDATA[
+      SELECT * from udong_groupboard	
+    ]]>
+  </select>
+	
+    
+  <insert id="addComment"  parameterType="commentVO">
+  		<selectKey keyProperty="article_no" order="BEFORE" resultType="int">
+  			select udong_seq.nextval from dual
+  		</selectKey>
+		<![CDATA[
+		 insert into udong_groupboard(article_no, article_title, article_content)
+		 values(#{article_no}, #{article_title}, #{article_content})
+		]]>      
+	</insert>
+
+
+</mapper>
