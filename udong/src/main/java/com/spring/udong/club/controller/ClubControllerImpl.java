@@ -46,8 +46,6 @@ public class ClubControllerImpl implements ClubController{
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
 		int result=0;
-		System.out.println("내용 : "+commentVO.getArticle_content());
-		System.out.println("타이틀 : "+commentVO.getArticle_title());
 		result = commentService.addComment(commentVO);
 		System.out.println("addComment 실행");
 		ModelAndView mav = new ModelAndView();
