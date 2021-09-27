@@ -20,12 +20,12 @@
 	
     
   <insert id="addComment"  parameterType="commentVO">
-  		<selectKey keyProperty="article_no" order="BEFORE" resultType="int">
+  		<selectKey keyProperty="no" order="BEFORE" resultType="int">
   			select udong_seq.nextval from dual
   		</selectKey>
 		<![CDATA[
-		 insert into udong_groupboard(article_no, article_title, article_content)
-		 values(#{article_no}, #{article_title}, #{article_content})
+		 insert into udong_groupboard(article_no,article_title, article_content)
+		 values(#{no}, #{article_title, jdbcType=VARCHAR}, #{article_content, jdbcType=VARCHAR})
 		]]>      
 	</insert>
 

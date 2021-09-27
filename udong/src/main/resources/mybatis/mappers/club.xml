@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.club">
+	<resultMap id="clubResult" type="clubVO">
+		<result property="group_name" column="group_name" />
+		<result property="group_category" column="group_category" />
+	</resultMap> 
+    
+  <insert id="insertClub"  parameterType="clubVO">
+		<![CDATA[
+		 insert into udong_list(group_name,group_category)
+		 values(#{group_name}, #{group_category})
+		]]>      
+	</insert>
+</mapper>
