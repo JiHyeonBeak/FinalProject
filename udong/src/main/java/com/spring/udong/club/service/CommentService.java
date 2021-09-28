@@ -8,5 +8,5 @@ import com.spring.udong.club.vo.CommentVO;
 public interface CommentService {
 	public List<CommentVO> listComment() throws Exception;
 	public int addComment(CommentVO commentVO) throws Exception;
-
+	public int deleteComment(CommentVO commentVO) throws Exception;
 }

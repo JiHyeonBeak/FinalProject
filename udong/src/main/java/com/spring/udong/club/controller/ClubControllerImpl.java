@@ -73,6 +73,13 @@ public class ClubControllerImpl implements ClubController{
 			mav.setViewName("login");
 			return mav;
 	}
+
+	@Override
+	public ModelAndView deleteComment(int article_no, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }

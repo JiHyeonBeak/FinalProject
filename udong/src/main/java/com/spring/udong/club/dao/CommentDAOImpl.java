@@ -27,4 +27,10 @@ public class CommentDAOImpl implements CommentDAO{
 ;		return result;
 	}
 
+	@Override
+	public int deleteComment(CommentVO commentVO) throws DataAccessException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

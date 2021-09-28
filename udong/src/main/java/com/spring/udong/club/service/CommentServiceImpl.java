@@ -27,4 +27,10 @@ public class CommentServiceImpl implements CommentService{
 		return commentDAO.insertComment(commentVO);
 	}
 
+	@Override
+	public int deleteComment(CommentVO commentVO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

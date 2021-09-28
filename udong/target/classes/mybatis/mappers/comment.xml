@@ -28,6 +28,14 @@
 		 values(#{no}, #{article_title, jdbcType=VARCHAR}, #{article_content, jdbcType=VARCHAR})
 		]]>      
 	</insert>
+	
+  <delete id="deleteComment"  parameterType="int">
+	<![CDATA[
+	   delete from udong_groupboard
+	   where
+	   article_no=#{article_no}
+	]]>      
+  </delete>
 
 
 </mapper>
