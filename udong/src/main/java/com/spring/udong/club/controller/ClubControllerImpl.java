@@ -45,7 +45,7 @@ public class ClubControllerImpl implements ClubController{
 		ModelAndView mav = new ModelAndView();
 		List commentList = commentService.listComment();
 		mav.addObject("commentList",commentList);
-		mav.setViewName("redirect:/club/main");
+		mav.setViewName("/club/listComment");
 		return mav;
 	}
 

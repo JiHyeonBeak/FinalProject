@@ -22,8 +22,13 @@ function fn_addco(){
 	<form action="${contextPath }/club/addComment" method="post" name="fm">
 	<h1>오늘의 이야기...</h1>
 	<table>
-	<tr><td><input type="text" name="article_title"/></td></tr>
-	<tr><td><textarea rows="8" cols="50" name="article_content"></textarea></td></tr>
+	<tr><td width="200"><p align="right">제목</td>
+	<td width="400"><input type="text" name="article_title"></td>
+	</tr>
+	<tr>
+	<td width="200"><p align="right">내용</td>
+	<td width="400"><textarea name="article_content" required></textarea></td>
+	</tr>
 	<tr><td><input type="button" value="입력" onclick="fn_addco()"></td></tr>
 	</table>
 	</form>
@@ -31,7 +36,7 @@ function fn_addco(){
 	<form action="${contextPath }/club/listComment" method="post" name="fm2">
 	<table>
 	<c:forEach var="com" items="${commentList}">
-	<tr><td>번호 : ${com.article_no }</td></tr>
+	<tr><td>번호 : ${com.article_no }</td><td><input type="button" value="삭제"></td></tr>
 	<tr><td>제목 : ${com.article_title }</td></tr>
 	<tr><td>내용 : ${com.article_content }</td></tr>
 	</c:forEach>
