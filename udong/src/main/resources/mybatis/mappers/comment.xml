@@ -5,11 +5,11 @@
 
 <mapper namespace="mapper.comment">
 	<resultMap id="comResult" type="commentVO">
-		<result property="article_no" column="article_no" />
-		<result property="article_title" column="article_title" />
-		<result property="article_content" column="article_content" />
-		<result property="article_like" column="article_like" />
-		<result property="article_hate" column="article_hate" />
+		<result property="articleNo" column="articleNo" />
+		<result property="articleTitle" column="articleTitle" />
+		<result property="articleContent" column="articleContent" />
+		<result property="articleLike" column="articleLike" />
+		<result property="articleHate" column="articleHate" />
 	</resultMap> 
 	
 	<select id="commentList" resultMap="comResult"   >
@@ -19,18 +19,21 @@
   </select>
 	
     
-  <insert id="addComment"  parameterType="commentVO">
+  <insert id="addComment" parameterType="commentVO">
+  		<selectKey keyProperty="articleNo" order="BEFORE" resultType="int">
+  			select udong_board_seq.nextval from dual
+  		</selectKey>
 		<![CDATA[
-		 insert into udong_groupboard(article_title, article_content)
-		 values(#{article_title, jdbcType=VARCHAR}, #{article_content, jdbcType=VARCHAR})
+		 insert into udong_groupboard(articleNo,articleTitle,articleContent)
+		 values(#{articleNo},#{articleTitle}, #{articleContent})
 		]]>      
 	</insert>
 	
-  <delete id="deleteComment"  parameterType="int">
+  <delete id="delComment"  parameterType="int">
 	<![CDATA[
 	   delete from udong_groupboard
 	   where
-	   article_no=#{article_no}
+	   articleNo=#{articleNo}
 	]]>      
   </delete>
 

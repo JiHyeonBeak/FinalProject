@@ -25,8 +25,7 @@
 </head>
 <body>	
 	<h1>
-		<a href="${contextPath}/member/listMembers.do"  class="no-underline">회원관리</a>
-		<a href=""  class="no-underline">동아리 개설</a>
+		<a href="${contextPath}/club/add"  class="no-underline">동아리 개설</a>
 		<a href="#"  class="no-underline">동아리 활동</a>
 	</h1>
 	

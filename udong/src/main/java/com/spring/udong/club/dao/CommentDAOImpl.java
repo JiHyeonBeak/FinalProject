@@ -23,14 +23,14 @@ public class CommentDAOImpl implements CommentDAO{
 
 	@Override
 	public int insertComment(CommentVO commentVO) throws DataAccessException {
-		int result = sqlSession.insert("mapper.comment.addComment");
-;		return result;
+		int result = sqlSession.insert("mapper.comment.addComment", commentVO);
+		return result;
 	}
 
 	@Override
 	public int deleteComment(CommentVO commentVO) throws DataAccessException {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = sqlSession.delete("mapper.comment.delComment", commentVO);
+		return result;
 	}
 
 }

@@ -17,4 +17,10 @@ public class ClubDAOImpl implements ClubDAO{
 		int result = sqlSession.insert("mapper.club.insertClub", clubVO);
 		return result;
 	}
+
+	@Override
+	public int updateClub(String groupid) throws DataAccessException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

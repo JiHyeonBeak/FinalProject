@@ -45,7 +45,7 @@ public class ClubControllerImpl implements ClubController{
 		ModelAndView mav = new ModelAndView();
 		List commentList = commentService.listComment();
 		mav.addObject("commentList",commentList);
-		mav.setViewName("/club/listComment");
+		mav.setViewName("clubMain");
 		return mav;
 	}
 
@@ -55,8 +55,11 @@ public class ClubControllerImpl implements ClubController{
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
 		int result=0;
+		String title = request.getParameter("articleTitle");
+		String content = request.getParameter("articleContent");
+		commentVO.setArticleTitle(title);
+		commentVO.setArticleContent(content);
 		result = commentService.addComment(commentVO);
-		System.out.println("addComment 실행");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/club/listComment");
 		return mav;
@@ -75,10 +78,14 @@ public class ClubControllerImpl implements ClubController{
 	}
 
 	@Override
-	public ModelAndView deleteComment(int article_no, HttpServletRequest request, HttpServletResponse response)
+	@RequestMapping(value="/club/delComment",method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView deleteComment(int articleNo, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		request.setCharacterEncoding("utf-8");
+		commentService.deleteComment(commentVO);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/club/listComment");
+		return mav;
 	}
 	
 
