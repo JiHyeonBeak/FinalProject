@@ -22,11 +22,16 @@
  </style>
   <meta charset="UTF-8">
   <title>사이드 메뉴</title>
+<script type="text/javascript">
+	
+
+
+</script>
 </head>
 <body>	
 	<h1>
 		<a href="${contextPath}/club/add"  class="no-underline">동아리 개설</a>
-		<a href="#"  class="no-underline">동아리 활동</a>
+		<a href="${contextPath}/club/listComment"  class="no-underline">동아리 활동</a>
 	</h1>
 	
 </body>

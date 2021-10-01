@@ -17,9 +17,14 @@ function fn_addco(){
 }
 
 function fn_delco(url,articleNo){
-	fm.setAttribute("method", "post");
-	fm.setAttribute("action", url);
-	fm.submit();
+	fm2.method = "post";
+	fm2.action = url;
+	var number = document.createElement("input");
+	number.setAttribute("name","articleNo");
+	number.setAttribute("type","hidden");
+	number.setAttribute("articleNo",articleNo);
+	fm2.appendChild(number);
+	fm2.submit();
 }
 
 </script>
@@ -37,7 +42,7 @@ function fn_delco(url,articleNo){
 	<form action="${contextPath }/club/listComment" method="post" name="fm2">
 	<table>
 	<c:forEach var="com" items="${commentList}">
-	<tr><td>번호 : ${com.articleNo }</td><td><input type="button" value="삭제"  onclick="fn_delco('${contextPath}/club/delComment', ${com.articleNo})"></td></tr>
+	<tr><td>번호 : ${com.articleNo }</td><td><input type="button" value="삭제"  onclick="fn_delco('${contextPath}/club/delComment',${com.articleNo})"></td></tr>
 	<tr><td>제목 : ${com.articleTitle }</td></tr>
 	<tr><td>내용 : ${com.articleContent }</td></tr>
 	</c:forEach>

@@ -82,7 +82,9 @@ public class ClubControllerImpl implements ClubController{
 	public ModelAndView deleteComment(int articleNo, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
+		System.out.println(commentVO.getArticleNo());
 		commentService.deleteComment(commentVO);
+		System.out.println(commentVO.getArticleContent());
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/club/listComment");
 		return mav;
