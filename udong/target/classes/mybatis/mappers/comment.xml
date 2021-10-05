@@ -14,7 +14,7 @@
 	
 	<select id="commentList" resultMap="comResult"   >
     <![CDATA[
-      SELECT * from udong_groupboard	
+      SELECT * from udong_groupboard order by articleNo desc
     ]]>
   </select>
 	

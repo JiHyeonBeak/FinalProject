@@ -13,6 +13,17 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 정보 수정창</title>
+<script type="text/javascript">
+function fn_ok(){
+	fm.submit();
+}
+
+function fn_del(){
+	fm.action = "${contextPath}/member/removeMember";
+	fm.submit();
+}
+
+</script>
 <style>
    .text_center{
      text-align:center;
@@ -20,7 +31,7 @@
 </style>
 </head>
 <body>
-	<form method="post"   action="${contextPath}/member/modMember">
+	<form method="post" action="${contextPath}/member/modMember" name="fm">
 	<h1  class="text_center">회원 정보 수정창</h1>
 	<table  align="center">
 	   <tr>
@@ -45,7 +56,7 @@
 	    </tr>
 	    <tr>
 	       <td width="200"><p>&nbsp;</p></td>
-	       <td width="400"><input type="submit" value="수정하기"><input type="reset" value="다시입력"></td>
+	       <td width="400"><input type="button" onclick="fn_ok()" value="수정하기"><input type="button" onclick="fn_del()" value="회원탈퇴"></td>
 	    </tr>
 	</table>
 	</form>

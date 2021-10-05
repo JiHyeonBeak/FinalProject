@@ -30,7 +30,7 @@ public class MemberControllerImpl implements MemberController{
 	
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String join(Locale locale, Model model) {
-		System.out.println("메인컨트롤러 작동");
+		System.out.println("조인컨트롤러 작동");
 		return "join";
 	}
 	
@@ -47,7 +47,7 @@ public class MemberControllerImpl implements MemberController{
 	}
 	
 	@Override
-	@RequestMapping(value="/member/addMember",method=RequestMethod.POST)
+	@RequestMapping(value="/member/addMember",method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView addMember(MemberVO memberVO, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
