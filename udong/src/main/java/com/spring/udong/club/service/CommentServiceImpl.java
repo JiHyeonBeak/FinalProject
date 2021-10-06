@@ -28,8 +28,18 @@ public class CommentServiceImpl implements CommentService{
 	}
 
 	@Override
-	public int deleteComment(CommentVO commentVO) throws Exception {
-		return commentDAO.deleteComment(commentVO);
+	public int deleteComment(int articleNo) throws Exception {
+		return commentDAO.deleteComment(articleNo);
+	}
+
+	@Override
+	public int modComment(int articleNo) throws Exception {
+		return commentDAO.modComment(articleNo);
+	}
+
+	@Override
+	public int like(int articleNo) throws Exception {
+		return commentDAO.like(articleNo);
 	}
 
 }

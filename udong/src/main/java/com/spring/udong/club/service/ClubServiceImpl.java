@@ -1,5 +1,7 @@
 package com.spring.udong.club.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -16,5 +18,10 @@ public class ClubServiceImpl implements ClubService{
 	@Override
 	public int addClub(ClubVO clubVO) throws DataAccessException {
 		return clubDAO.insertClub(clubVO);
+	}
+
+	@Override
+	public List<ClubVO> clubList() throws Exception {
+		return clubDAO.clubList();
 	}
 }

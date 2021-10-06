@@ -15,6 +15,6 @@
   <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
-   <h1>메인 페이지입니다!!</h1>
+   <h1>인기 동아리</h1>
 </body>
 </html>

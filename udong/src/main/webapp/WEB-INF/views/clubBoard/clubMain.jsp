@@ -9,6 +9,12 @@
 <head>
 <meta charset="UTF-8">
 <title>동아리 메인</title>
+<style>
+	.hide {
+		display:none;
+	}
+
+</style>
 <script type="text/javascript">
 
 
@@ -16,15 +22,56 @@ function fn_addco(){
 	fm.submit();
 }
 
-function fn_delco(url,articleNo){
-	fm2.method = "post";
-	fm2.action = url;
-	var number = document.createElement("input");
-	number.setAttribute("name","articleNo");
-	number.setAttribute("type","hidden");
-	number.setAttribute("articleNo",articleNo);
-	fm2.appendChild(number);
-	fm2.submit();
+function fn_delco(articleNo){
+	 var form = document.createElement("form");
+	 form.removeAttribute("method");
+	 form.setAttribute("method", "post");
+	 form.setAttribute("action", "${contextPath}/club/delComment");
+     var articleNOInput = document.createElement("input");
+     articleNOInput.setAttribute("type","hidden");
+     articleNOInput.setAttribute("name","articleNo");
+     articleNOInput.setAttribute("value", articleNo);
+	 
+     form.appendChild(articleNOInput);
+     document.body.appendChild(form);
+     form.submit();
+}
+
+function fn_modmod(){
+	document.getElementById('list').setAttribute('class','hide');
+	document.getElementById('modmod').removeAttribute('class');
+}
+
+function fn_modco(articleNo){
+	document.getElementById('modmod').setAttribute('class','hide');
+	document.getElementById('list').removeAttribute('class');
+	var form = document.createElement("form");
+	form.removeAttribute("method");
+	form.setAttribute("method", "post");
+	form.setAttribute("action", "${contextPath}/club/modComment");
+    var articleNOInput = document.createElement("input");
+    articleNOInput.setAttribute("type","hidden");
+    articleNOInput.setAttribute("name","articleNo");
+    articleNOInput.setAttribute("value", articleNo);
+	 
+    form.appendChild(articleNOInput);
+    document.body.appendChild(form);
+    form.submit();
+}
+function fn_like(articleNo){
+	var form = document.createElement("form");
+	form.removeAttribute("method");
+	form.setAttribute("method", "post");
+	form.setAttribute("action", "${contextPath}/club/like");
+    var articleNOInput = document.createElement("input");
+    articleNOInput.setAttribute("type","hidden");
+    articleNOInput.setAttribute("name","articleNo");
+    articleNOInput.setAttribute("value", articleNo);
+	 
+    form.appendChild(articleNOInput);
+    document.body.appendChild(form);
+    form.submit();
+    
 }
 
 </script>
@@ -40,14 +87,26 @@ function fn_delco(url,articleNo){
 	</form>
 	
 	<form action="${contextPath }/club/listComment" method="post" name="fm2">
-	<table>
 	<c:forEach var="com" items="${commentList}">
-	<tr><td>번호 : ${com.articleNo }</td><td><input type="button" value="삭제"  onclick="fn_delco('${contextPath}/club/delComment',${com.articleNo})"></td></tr>
-	<tr><td>제목 : ${com.articleTitle }</td></tr>
+	<table id="modmod" class="hide">
+	<tr><td>제목 : <input type="text" value=${com.articleTitle }></td></tr>
+	<tr><td>내용 : <input type="text" value=${com.articleContent }></td></tr>
+	<tr><td><input type="button" value="확인"  onclick="fn_modco(${com.articleNo})"></td>
+	</table>
+	</c:forEach>
+	
+	<table id="list">
+	<c:forEach var="com" items="${commentList}">
+	<tr><td><input type="button" value="수정"  onclick="fn_modmod()"></td><td><input type="button" value="삭제"  onclick="fn_delco(${com.articleNo})"></td></tr>
+	<tr><td>제목 : ${com.articleTitle }</td><td> ${com.wdate }</td></tr>
+	<tr><td>작성자 : ${com.articleId }</td></tr>
 	<tr><td>내용 : ${com.articleContent }</td></tr>
+	<tr><td>좋아요 : ${com.articleLike }</td></tr>
+	<tr><td>싫어요 : ${com.articleHate }</td></tr>
+	<tr><td><input type="button" value="좋아요"  onclick="fn_like(${com.articleNo})"></td><td><input type="button" value="싫어요"  onclick="fn_delco(${com.articleNo})"></td></tr>
+	<tr><td>ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</td><td>ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</td></tr>
 	</c:forEach>
 	</table>
-	
 	</form>
 </body>
 </html>

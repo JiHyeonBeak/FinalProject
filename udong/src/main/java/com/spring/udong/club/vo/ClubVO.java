@@ -4,8 +4,23 @@ import org.springframework.stereotype.Component;
 
 @Component("clubVO")
 public class ClubVO {
+	private int group_id;
 	private String group_name;
 	private String group_category;
+	private String group_info;
+	
+	public int getGroup_id() {
+		return group_id;
+	}
+	public void setGroup_id(int group_id) {
+		this.group_id = group_id;
+	}
+	public String getGroup_info() {
+		return group_info;
+	}
+	public void setGroup_info(String group_info) {
+		this.group_info = group_info;
+	}
 	
 	public String getGroup_name() {
 		return group_name;

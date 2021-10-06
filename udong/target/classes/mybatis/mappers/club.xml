@@ -5,14 +5,25 @@
 
 <mapper namespace="mapper.club">
 	<resultMap id="clubResult" type="clubVO">
+		<result property="group_id" column="group_id" />
 		<result property="group_name" column="group_name" />
 		<result property="group_category" column="group_category" />
+		<result property="group_info" column="group_info" />
 	</resultMap> 
+	
+	<select id="clubList" resultMap="clubResult"   >
+    <![CDATA[
+      SELECT * from udong_list order by group_id desc
+    ]]>
+  </select>
     
   <insert id="insertClub"  parameterType="clubVO">
+  		<selectKey keyProperty="group_id" order="BEFORE" resultType="int">
+  			select udong_list_seq.nextval from dual
+  		</selectKey>
 		<![CDATA[
-		 insert into udong_list(group_name,group_category)
-		 values(#{group_name}, #{group_category})
+		 insert into udong_list(group_id,group_name,group_info)
+		 values(#{group_id}, #{group_name},#{group_info})
 		]]>      
 	</insert>
 </mapper>

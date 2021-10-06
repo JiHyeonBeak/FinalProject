@@ -91,6 +91,7 @@ public class MemberControllerImpl implements MemberController{
 		if(memberVO != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", memberVO);
+			System.out.println("로그인 컨트롤러상 vo : "+memberVO.getId());
 			session.setAttribute("isLogOn", true);
 			String action = (String)session.getAttribute("action");
 			session.removeAttribute("action");

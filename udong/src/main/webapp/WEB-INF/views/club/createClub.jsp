@@ -20,15 +20,21 @@
 		</tr>
 			<tr>
 			<td width="200"><p align="right">동아리 소개</td>
-	      	<td width="400"><textarea placeholder="내용" name="group_category" required></textarea></td>
+	      	<td width="400"><textarea placeholder="내용" name="group_info" required></textarea></td>
 		</tr>
 		<tr>
-			<td width="200"><p align="right">동아리 태그</td>
-	      	<td width="400"><input type="text" name="group_tag"></td>
+			<td width="200"><p align="right">카테고리</td>
+	      	<td width="400"><select name="group_category">
+	      	<option value="culture">언어/문화</option>
+	      	<option value="sports">스포츠</option>
+	      	<option value="social">친목</option>
+	      	<option value="trip">여행</option>
+	      	<option value="game">게임</option>
+	      	</select></td>
 		</tr>
 		<tr>
 	       <td width="200"><p>&nbsp;</p></td>
-	       <td width="400"><input type="submit" value="만들기"><input type="reset" value="다시입력"></td>
+	       <td width="400"><input type="submit" value="만들기"><input type="button" value="홈으로"></td>
 	    </tr>
 	</table>
 	</form>

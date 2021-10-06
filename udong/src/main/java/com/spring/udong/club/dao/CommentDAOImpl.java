@@ -28,8 +28,20 @@ public class CommentDAOImpl implements CommentDAO{
 	}
 
 	@Override
-	public int deleteComment(CommentVO commentVO) throws DataAccessException {
-		int result = sqlSession.delete("mapper.comment.delComment", commentVO);
+	public int deleteComment(int articleNo) throws DataAccessException {
+		int result = sqlSession.delete("mapper.comment.delComment", articleNo);
+		return result;
+	}
+
+	@Override
+	public int modComment(int articleNo) throws DataAccessException {
+		int result = sqlSession.update("mapper.comment.modComment", articleNo);
+		return result;
+	}
+
+	@Override
+	public int like(int articleNo) throws DataAccessException {
+		int result = sqlSession.update("mapper.comment.like", articleNo);
 		return result;
 	}
 

@@ -1,5 +1,7 @@
 package com.spring.udong.club.vo;
 
+import java.sql.Date;
+
 import org.springframework.stereotype.Component;
 
 @Component("commentVO")
@@ -9,7 +11,22 @@ public class CommentVO {
 	private String articleContent;
 	private int articleLike;
 	private int articleHate;
+	private Date wdate;
+	private String articleId;
 	
+	
+	public String getArticleId() {
+		return articleId;
+	}
+	public void setArticleId(String articleId) {
+		this.articleId = articleId;
+	}
+	public Date getWdate() {
+		return wdate;
+	}
+	public void setWdate(Date wdate) {
+		this.wdate = wdate;
+	}
 	public int getArticleNo() {
 		return articleNo;
 	}

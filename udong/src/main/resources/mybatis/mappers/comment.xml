@@ -24,8 +24,8 @@
   			select udong_board_seq.nextval from dual
   		</selectKey>
 		<![CDATA[
-		 insert into udong_groupboard(articleNo,articleTitle,articleContent)
-		 values(#{articleNo},#{articleTitle}, #{articleContent})
+		 insert into udong_groupboard(articleNo,articleTitle,articleContent,articleId)
+		 values(#{articleNo},#{articleTitle}, #{articleContent},#{articleId})
 		]]>      
 	</insert>
 	
@@ -36,6 +36,30 @@
 	   articleNo=#{articleNo}
 	]]>      
   </delete>
+  
+   <update id="modComment"  parameterType="int">
+     <![CDATA[
+	     update udong_groupboard
+	     set articleTitle=#{articleTitle}, articleCotent=#{articleContent}
+	     where articleNo=#{articleNo}
+      ]]>      
+   </update> 
+   
+   <update id="like"  parameterType="commentVO">
+     <![CDATA[
+	     update udong_groupboard
+	     set articleLike=articleLike+1
+	     where articleNo=#{articleNo}
+      ]]>      
+   </update> 
+   
+   <update id="dislike"  parameterType="commentVO">
+     <![CDATA[
+	     update udong_groupboard
+	     set articleHate=articleHate+1
+	     where articleNo=#{articleNo}
+      ]]>      
+   </update> 
 
 
 </mapper>

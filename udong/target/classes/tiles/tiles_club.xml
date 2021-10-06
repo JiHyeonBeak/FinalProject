@@ -11,10 +11,19 @@
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
 	
-	<definition name="clubMain" extends="baseLayout">
+	<definition name="clubHome" extends="baseLayout">
       <put-attribute name="title" value="우리동네 동아리, 우동" />
-      <put-attribute name="body" value="/WEB-INF/views/clubBoard/clubMain.jsp" />
+      <put-attribute name="body" value="/WEB-INF/views/club/clubHome.jsp" />
     </definition>
     
+    <definition name="joinClub" extends="baseLayout">
+      <put-attribute name="title" value="우리동네 동아리, 우동" />
+      <put-attribute name="body" value="/WEB-INF/views/club/joinClub.jsp" />
+    </definition>
+    
+    <definition name="createClub" extends="baseLayout">
+      <put-attribute name="title" value="우리동네 동아리, 우동" />
+      <put-attribute name="body" value="/WEB-INF/views/club/createClub.jsp" />
+    </definition>
 
 </tiles-definitions>

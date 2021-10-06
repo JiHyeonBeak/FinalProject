@@ -19,6 +19,9 @@ function fn_ok(){
 }
 
 function fn_del(){
+	
+	
+	
 	fm.action = "${contextPath}/member/removeMember";
 	fm.submit();
 }
@@ -35,8 +38,9 @@ function fn_del(){
 	<h1  class="text_center">회원 정보 수정창</h1>
 	<table  align="center">
 	   <tr>
-	      <td width="200"><p align="right">아이디</td>
-	      <td width="400"><input type="text" name="id"></td>
+	      <c:when test="${isLogOn == true  && member!= null}">
+            <td>아이디 : ${member.id }</td>
+          </c:when>
 	   </tr>
 	   <tr>
 	      <td width="200"><p align="right">비밀번호</td>
