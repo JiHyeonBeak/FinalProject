@@ -141,6 +141,17 @@ public class ClubControllerImpl implements ClubController{
 		mav.setViewName("redirect:/club/listComment");
 		return mav;
 	}
+
+	@Override
+	@RequestMapping(value="/club/dislike",method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView dislike(int articleNo, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		request.setCharacterEncoding("utf-8");
+		commentService.dislike(articleNo);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/club/listComment");
+		return mav;
+	}
 	
 
 }

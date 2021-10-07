@@ -42,4 +42,9 @@ public class CommentServiceImpl implements CommentService{
 		return commentDAO.like(articleNo);
 	}
 
+	@Override
+	public int dislike(int articleNo) throws Exception {
+		return commentDAO.dislike(articleNo);
+	}
+
 }

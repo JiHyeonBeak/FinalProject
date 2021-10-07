@@ -45,4 +45,10 @@ public class CommentDAOImpl implements CommentDAO{
 		return result;
 	}
 
+	@Override
+	public int dislike(int articleNo) throws DataAccessException {
+		int result = sqlSession.update("mapper.comment.dislike", articleNo);
+		return result;
+	}
+
 }
