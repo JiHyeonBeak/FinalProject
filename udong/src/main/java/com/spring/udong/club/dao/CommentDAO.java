@@ -11,6 +11,7 @@ public interface CommentDAO {
 	public int insertComment(CommentVO commentVO)throws DataAccessException;
 	public int deleteComment(int articleNo)throws DataAccessException;
 	public int modComment(int articleNo)throws DataAccessException;
+	public List modList(int articleNo) throws DataAccessException;
 	public int like(int articleNo)throws DataAccessException;
 	public int dislike(int articleNo)throws DataAccessException;
 

@@ -17,9 +17,10 @@ public interface ClubController {
 	
 	public ModelAndView addComment(HttpServletRequest request,HttpServletResponse response )throws Exception;
 	
-	public ModelAndView deleteComment(@RequestParam("articleNo") int article_no,HttpServletRequest request,HttpServletResponse response )throws Exception;
+	public ModelAndView deleteComment(@RequestParam("articleNo") int articleNo,HttpServletRequest request,HttpServletResponse response )throws Exception;
 	
-	public ModelAndView modComment(@RequestParam("articleNo") int article_no,HttpServletRequest request,HttpServletResponse response )throws Exception;
+	public ModelAndView modComment(@RequestParam("articleNo") int articleNo, HttpServletRequest request,HttpServletResponse response )throws Exception;
+	public ModelAndView modList(@RequestParam("articleNo") int articleNo, HttpServletRequest request, HttpServletResponse response)throws Exception;
 	
 	public ModelAndView like(@RequestParam("articleNo") int articleNo,HttpServletRequest request,HttpServletResponse response )throws Exception;
 	public ModelAndView dislike(@RequestParam("articleNo") int articleNo,HttpServletRequest request,HttpServletResponse response )throws Exception;

@@ -126,7 +126,7 @@ public class ClubControllerImpl implements ClubController{
 		request.setCharacterEncoding("utf-8");
 		commentService.modComment(articleNo);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("main");
+		mav.setViewName("redirect:/club/listComment");
 		return mav;
 	}
 
@@ -135,6 +135,8 @@ public class ClubControllerImpl implements ClubController{
 	public ModelAndView like(int articleNo, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
+		int like = commentVO.getArticleLike();
+		commentVO.setArticleLike(4);
 		commentService.like(articleNo);
 		System.out.println("vo상 like : "+commentVO.getArticleLike());
 		ModelAndView mav = new ModelAndView();
@@ -152,6 +154,17 @@ public class ClubControllerImpl implements ClubController{
 		mav.setViewName("redirect:/club/listComment");
 		return mav;
 	}
-	
+
+	@Override
+	@RequestMapping(value= "/club/modList", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView modList(int articleNo, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		ModelAndView mav = new ModelAndView();
+		List modList = commentService.modList(articleNo);
+		mav.addObject("modList",modList);
+		mav.setViewName("clubMain");
+		return mav;
+	}
+
 
 }

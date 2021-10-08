@@ -38,6 +38,7 @@ function fn_delco(articleNo){
 }
 
 function fn_modmod(){
+	fm2.submit();
 	document.getElementById('list').setAttribute('class','hide');
 	document.getElementById('modmod').removeAttribute('class');
 }
@@ -46,7 +47,6 @@ function fn_modco(articleNo){
 	document.getElementById('modmod').setAttribute('class','hide');
 	document.getElementById('list').removeAttribute('class');
 	var form = document.createElement("form");
-	form.removeAttribute("method");
 	form.setAttribute("method", "post");
 	form.setAttribute("action", "${contextPath}/club/modComment");
     var articleNOInput = document.createElement("input");
@@ -86,8 +86,8 @@ function fn_like(articleNo){
 	</table>
 	</form>
 	
-	<form action="${contextPath }/club/listComment" method="post" name="fm2">
-	<c:forEach var="com" items="${commentList}">
+	<form action="${contextPath}/club/modList" method="post" name="fm2">
+	<c:forEach var="com" items="${modList}">
 	<table id="modmod" class="hide">
 	<tr><td>제목 : <input type="text" value=${com.articleTitle }></td></tr>
 	<tr><td>내용 : <input type="text" value=${com.articleContent }></td></tr>

@@ -10,6 +10,7 @@ public interface CommentService {
 	public int addComment(CommentVO commentVO) throws Exception;
 	public int deleteComment(int articleNo) throws Exception;
 	public int modComment(int articleNo) throws Exception;
+	public List<CommentVO> modList(int articleNo) throws Exception;
 	public int like(int articleNo) throws Exception;
 	public int dislike(int articleNo) throws Exception;
 }

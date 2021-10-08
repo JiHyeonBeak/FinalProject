@@ -18,6 +18,13 @@
     ]]>
   </select>
 	
+	<select id="modList" resultMap="comResult"   >
+    <![CDATA[
+      SELECT * from udong_groupboard 
+      where articleNo=#{articleNo}
+    ]]>
+  </select>
+	
     
   <insert id="addComment" parameterType="commentVO">
   		<selectKey keyProperty="articleNo" order="BEFORE" resultType="int">
@@ -40,7 +47,7 @@
    <update id="modComment"  parameterType="int">
      <![CDATA[
 	     update udong_groupboard
-	     set articleTitle=#{articleTitle}, articleCotent=#{articleContent}
+	     set articleTitle=#{articleTitle}, articleContent=#{articleContent}
 	     where articleNo=#{articleNo}
       ]]>      
    </update> 

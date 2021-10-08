@@ -51,4 +51,10 @@ public class CommentDAOImpl implements CommentDAO{
 		return result;
 	}
 
+	@Override
+	public List modList(int articleNo) throws DataAccessException {
+		List<CommentVO> modList = sqlSession.selectList("mapper.comment.modList",articleNo);
+		return modList;
+	}
+
 }

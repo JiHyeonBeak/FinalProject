@@ -9,6 +9,23 @@
 <head>
 <meta charset="UTF-8">
 <title>동아리 개설</title>
+<script type="text/javascript">
+function fn_delco(articleNo){
+	 var form = document.createElement("form");
+	 form.removeAttribute("method");
+	 form.setAttribute("method", "post");
+	 form.setAttribute("action", "${contextPath}/club/delComment");
+    var articleNOInput = document.createElement("input");
+    articleNOInput.setAttribute("type","hidden");
+    articleNOInput.setAttribute("name","articleNo");
+    articleNOInput.setAttribute("value", articleNo);
+	 
+    form.appendChild(articleNOInput);
+    document.body.appendChild(form);
+    form.submit();
+}
+
+</script>
 </head>
 <body>
 	<form method="post" action="${contextPath}/club/addClub">
