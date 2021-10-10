@@ -15,6 +15,6 @@
   <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
-   <h1>인기 동아리</h1>
+   <h1>추천 동아리</h1>
 </body>
 </html>

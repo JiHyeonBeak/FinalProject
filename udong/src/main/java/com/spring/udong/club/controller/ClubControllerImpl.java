@@ -75,7 +75,6 @@ public class ClubControllerImpl implements ClubController{
 		String content = request.getParameter("articleContent");
 		memberVO = (MemberVO)session.getAttribute("member");
 		String id = memberVO.getId();
-		System.out.println("클럽콘트롤러 상 id: "+id);
 		commentVO.setArticleTitle(title);
 		commentVO.setArticleContent(content);
 		commentVO.setArticleId(id);

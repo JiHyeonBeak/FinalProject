@@ -1,5 +1,7 @@
 package com.spring.udong.member.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -25,8 +27,8 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public int updateMember(String id) throws DataAccessException {
-		int result = sqlSession.update("mapper.member.updateMember",id);
+	public int updateMember(MemberVO memberVO) throws DataAccessException {
+		int result = sqlSession.update("mapper.member.updateMember",memberVO);
 		return result;
 	}
 
@@ -35,5 +37,6 @@ public class MemberDAOImpl implements MemberDAO{
 		MemberVO vo = sqlSession.selectOne("mapper.member.loginMember",memberVO);
 		return vo;
 	}
+
 
 }

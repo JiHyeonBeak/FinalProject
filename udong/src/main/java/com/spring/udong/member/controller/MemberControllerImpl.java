@@ -51,6 +51,7 @@ public class MemberControllerImpl implements MemberController{
 	public ModelAndView addMember(MemberVO memberVO, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("text/html;charset=utf-8");
 		int result = 0;
 		result = memberService.addMember(memberVO);
 		System.out.println("에드컨트롤러 작동");
@@ -60,24 +61,43 @@ public class MemberControllerImpl implements MemberController{
 	}
 
 	@Override
-	@RequestMapping(value="/member/removeMember",method=RequestMethod.POST)
+	@RequestMapping(value="/member/removeMember",method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView removeMember(String id, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
+		System.out.println("컨트롤러상 id: "+id);
 		memberService.removeMember(id);
 		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession();
+		session.removeAttribute("member");
+		session.removeAttribute("isLogOn");
 		mav.setViewName("main");
 		return mav;
 	}
 
 	@Override
-	@RequestMapping(value="/member/modMember",method=RequestMethod.POST)
+	@RequestMapping(value="/member/modMember",method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView modMember(String id, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
-		memberService.updateMember(id);
+		id = request.getParameter("id");
+		String pwd = request.getParameter("pwd");
+		String address = request.getParameter("address");
+		String email = request.getParameter("email");
+		String ph = request.getParameter("ph");
+		System.out.println("파람값:"+id);
+		memberVO.setId(id);
+		memberVO.setPwd(pwd);
+		memberVO.setAddress(address);
+		memberVO.setEmail(email);
+		memberVO.setPh(ph);
+		System.out.println("id:"+memberVO.getId());
+		System.out.println("email:"+email);
+		System.out.println("pwd:"+pwd);
+		System.out.println("ph:"+ph);
+		System.out.println("address:"+address);
+		memberService.updateMember(memberVO);
 		ModelAndView mav = new ModelAndView();
-		System.out.println("수정컨트롤러 작동");
 		mav.setViewName("main");
 		return mav;
 	}
@@ -91,7 +111,6 @@ public class MemberControllerImpl implements MemberController{
 		if(memberVO != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", memberVO);
-			System.out.println("로그인 컨트롤러상 vo : "+memberVO.getId());
 			session.setAttribute("isLogOn", true);
 			String action = (String)session.getAttribute("action");
 			session.removeAttribute("action");
@@ -114,6 +133,18 @@ public class MemberControllerImpl implements MemberController{
 		session.removeAttribute("isLogOn");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("main");
+		return mav;
+	}
+
+	@Override
+	@RequestMapping(value="/modInfo",method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView modInfo(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
+		memberVO = (MemberVO)session.getAttribute("member");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("memberVO",memberVO);
+		mav.setViewName("update");
 		return mav;
 	}
 	
