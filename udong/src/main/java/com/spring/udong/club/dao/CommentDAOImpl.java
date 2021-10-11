@@ -14,6 +14,8 @@ import com.spring.udong.club.vo.CommentVO;
 public class CommentDAOImpl implements CommentDAO{
 	@Autowired
 	private SqlSession sqlSession;
+	@Autowired
+	private CommentVO commentVO;
 
 	@Override
 	public List CommentList() throws DataAccessException {
@@ -53,7 +55,7 @@ public class CommentDAOImpl implements CommentDAO{
 
 	@Override
 	public List modList(int articleNo) throws DataAccessException {
-		List<CommentVO> modList = sqlSession.selectList("mapper.comment.modList",articleNo);
+		List modList = sqlSession.selectList("mapper.comment.modList",articleNo);
 		return modList;
 	}
 

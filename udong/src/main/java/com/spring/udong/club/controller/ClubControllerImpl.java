@@ -123,6 +123,7 @@ public class ClubControllerImpl implements ClubController{
 	public ModelAndView modComment(int articleNo, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
+		System.out.println("모드컨트롤러 상 no : "+articleNo);
 		commentService.modComment(articleNo);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/club/listComment");
@@ -134,9 +135,7 @@ public class ClubControllerImpl implements ClubController{
 	public ModelAndView like(int articleNo, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
-		int like = commentVO.getArticleLike();
-		commentVO.setArticleLike(4);
-		commentService.like(articleNo);
+		int like = commentService.like(articleNo);
 		System.out.println("vo상 like : "+commentVO.getArticleLike());
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/club/listComment");
@@ -160,7 +159,7 @@ public class ClubControllerImpl implements ClubController{
 			throws Exception {
 		ModelAndView mav = new ModelAndView();
 		List modList = commentService.modList(articleNo);
-		mav.addObject("modList",modList);
+		mav.addObject("modComment", modList);
 		mav.setViewName("clubMain");
 		return mav;
 	}

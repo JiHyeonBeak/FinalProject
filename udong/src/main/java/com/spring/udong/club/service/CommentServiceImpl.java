@@ -49,7 +49,7 @@ public class CommentServiceImpl implements CommentService{
 
 	@Override
 	public List<CommentVO> modList(int articleNo) throws Exception {
-		List<CommentVO> modList = commentDAO.modList(articleNo);
+		List modList = commentDAO.modList(articleNo);
 		return modList;
 	}
 
