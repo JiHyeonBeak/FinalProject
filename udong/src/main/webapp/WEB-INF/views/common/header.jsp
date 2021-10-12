@@ -19,7 +19,7 @@
 <table border=0  width="100%">
   <tr>
      <td>
-		<a href="${contextPath}/main">
+		<a href="${contextPath}/club/main">
 		</a>
      </td>
      <td>
@@ -27,7 +27,6 @@
      </td>
      
      <td>
-       <!-- <a href="#"><h3>로그인</h3></a> -->
        <c:choose>
           <c:when test="${isLogOn == true  && member!= null}">
             <h3>환영합니다. ${member.name }님!</h3>

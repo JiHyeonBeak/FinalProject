@@ -9,39 +9,47 @@
   <head>
     <meta charset="UTF-8">
     <style>
+    @font-face{
+    	font-family:"mon";
+    	src:url("../font/'TMONBlack.ttf'");
+    }
       #container {
         width: 100%;
         margin: 0px auto;
-          text-align:center;
+        text-align:center;
         border: 0px solid #bcbcbc;
+        
       }
       #header {
         padding: 5px;
         margin-bottom: 5px;
         border: 0px solid #bcbcbc;
-         background-color: lightgreen;
+        background-color: lightblue;
+        font-family: "mon";
       }
-      #sidebar-left {
+      #sidebar {
         height:50px;
         padding: 5px;
         margin-right: 5px;
+        margin-left: 5px;
         margin-bottom: 5px;
-        background-color: yellow;
-        border: 0px solid #bcbcbc;
+        border: 1px solid lightblue;
         font-size:10px;
+        text-align:center;
+        font-family: "mon";
       }
       #content {
-        width: 75%;
-        padding: 5px;
-        margin-right: 5px;
-        float: left;
-        border: 0px solid #bcbcbc;
+        width: 95%;
+        padding: 10px;
+        margin:10px;
+        float: none;
       }
       #footer {
         clear: both;
-        padding: 5px;
+        padding: 10px;
         border: 0px solid #bcbcbc;
-         background-color: lightblue;
+        background-color: lightblue;
+        font-family: "mon";
       }
       
     </style>
@@ -52,7 +60,7 @@
       <div id="header">
          <tiles:insertAttribute name="header"/>
       </div>
-      <div id="sidebar-left">
+      <div id="sidebar">
           <tiles:insertAttribute name="side"/> 
       </div>
       <div id="content">

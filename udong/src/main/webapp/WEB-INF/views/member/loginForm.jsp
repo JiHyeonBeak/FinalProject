@@ -18,9 +18,28 @@
 		margin: 5px;
 	}
 	#fm {
-		border: 1px solid black;
+		border: 1px solid #73a1eb;
 		width:500px;
 		height:500px;
+	}
+	table {
+		padding: 30px;
+	}
+	tr {
+		position: relative;
+		top: 30px;
+	}
+	h1 {
+		color: #73a1eb;
+	}
+	
+	#loginbtn {
+		border : 0px;
+		border-radius: 12px;
+		background-color: #73a1eb;
+		width: 100px;
+		height:50px;
+		font-size: 20px;
 	}
 
 </style>
@@ -36,8 +55,9 @@
 </head>
 
 <body>
-<form name="frmLogin" method="post"  action="${contextPath}/member/login">
+<center><form name="frmLogin" method="post"  action="${contextPath}/member/login">
 	<div align="center" id="fm">
+	<h1> Log In </h1>
    <table id="login" align="center" >
       <tr align="center">
          <td>아이디</td><td><input type="text" name="id" value="" size="20"></td>
@@ -46,10 +66,10 @@
          <td>비밀번호</td><td><input type="password" name="pwd" value="" size="20"></td>
       </tr>
       <tr align="center">
-         <td colspan="2"><input type="submit" value="로그인" ></td> 
+         <td colspan="2"><input type="submit" value="로그인" id='loginbtn'></td> 
       </tr>
    </table>
    </div>
-</form>
+</form></center>
 </body>
 </html>
