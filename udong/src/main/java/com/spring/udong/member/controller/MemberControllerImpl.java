@@ -85,7 +85,6 @@ public class MemberControllerImpl implements MemberController{
 		String address = request.getParameter("address");
 		String email = request.getParameter("email");
 		String ph = request.getParameter("ph");
-		System.out.println("파람값:"+id);
 		memberVO.setId(id);
 		memberVO.setPwd(pwd);
 		memberVO.setAddress(address);

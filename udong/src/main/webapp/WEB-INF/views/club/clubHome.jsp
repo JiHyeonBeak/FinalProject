@@ -9,30 +9,41 @@
 <head>
 <meta charset="UTF-8">
 <title>동아리 활동</title>
+<style>
+	#grp {
+		display: inline;
+	}
+</style>
 <script type="text/javascript">
-function fn_join(url,group_name){
-	fm.method = "post";
-	fm.action = url;
-	var number = document.createElement("input");
-	number.setAttribute("name","group_name");
-	number.setAttribute("type","hidden");
-	number.setAttribute("group_name",group_name);
-	fm.appendChild(number);
-	fm.submit();
+function fn_join(group_name,group_id){
+	if(confirm(group_name+"에 가입하시겠습니까?")){
+		fm.removeAttribute("action");
+		fm.setAttribute("action", "${contextPath}/club/joinClub");
+		var gid = document.createElement("input");
+		gid.setAttribute("name","group_id");
+		gid.setAttribute("type","hidden");
+		gid.setAttribute("value",group_id);
+		fm.appendChild(gid);
+		fm.submit();
+	}else{
+		
+	}
 }
 </script>
 </head>
 <body>
-<h2>가입 가능 동아리</h2>
+<h2>참여 가능 모임</h2>
 	<form action="${contextPath }/club/listClub" method="post" name="fm">
-	<table>
+	<table id="grp">
 	<c:forEach var="club" items="${clubList}">
-	<tr><td>동아리 이름 : </td><td><a onclick="fn_join('${contextPath}/club/join',${club.group_name})">${club.group_name }</a></td></tr>	
+	<tr><td>모임 이름 : </td><td>${club.group_name }</td><td><input type="button" onclick="fn_join('${club.group_name}','${club.group_id}')" value="참여신청"></td></tr>	
+	<tr><td>모임 일정 : </td><td>${club.group_date }</td></tr>
 	<tr><td>카테고리 : ${club.group_category }</td></tr>
-	<tr><td>동아리 소개 : ${club.group_info }</td></tr>
+	<tr><td>모임 소개 : ${club.group_info }</td></tr>
+	<tr><td>--------------------------</td></tr>
 	</c:forEach>
 	</table>
 	</form>
-<h2>가입 동아리</h2>
+<h2>참여한 모임</h2>
 </body>
 </html>

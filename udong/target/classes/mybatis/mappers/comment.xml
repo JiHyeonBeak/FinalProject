@@ -14,13 +14,13 @@
 	
 	<select id="commentList" resultMap="comResult"   >
     <![CDATA[
-      SELECT * from udong_groupboard order by articleNo desc
+      SELECT * from udong_board order by articleNo desc
     ]]>
   </select>
 	
 	<select id="modList" resultMap="comResult"   >
     <![CDATA[
-      SELECT * from udong_groupboard 
+      SELECT * from udong_board 
       where articleNo=#{articleNo}
     ]]>
   </select>
@@ -31,14 +31,14 @@
   			select udong_board_seq.nextval from dual
   		</selectKey>
 		<![CDATA[
-		 insert into udong_groupboard(articleNo,articleTitle,articleContent,articleId)
+		 insert into udong_board(articleNo,articleTitle,articleContent,articleId)
 		 values(#{articleNo},#{articleTitle}, #{articleContent},#{articleId})
 		]]>      
 	</insert>
 	
   <delete id="delComment"  parameterType="int">
 	<![CDATA[
-	   delete from udong_groupboard
+	   delete from udong_board
 	   where
 	   articleNo=#{articleNo}
 	]]>      
@@ -46,7 +46,7 @@
   
    <update id="modComment"  parameterType="int">
      <![CDATA[
-	     update udong_groupboard
+	     update udong_board
 	     set articleTitle=#{articleTitle}, articleContent=#{articleContent}
 	     where articleNo=#{articleNo}
       ]]>      
@@ -54,7 +54,7 @@
    
    <update id="like"  parameterType="commentVO">
      <![CDATA[
-	     update udong_groupboard
+	     update udong_board
 	     set articleLike=articleLike+1
 	     where articleNo=#{articleNo}
       ]]>      
@@ -62,7 +62,7 @@
    
    <update id="dislike"  parameterType="commentVO">
      <![CDATA[
-	     update udong_groupboard
+	     update udong_board
 	     set articleHate=articleHate+1
 	     where articleNo=#{articleNo}
       ]]>      

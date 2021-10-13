@@ -1,5 +1,7 @@
 package com.spring.udong.club.vo;
 
+import java.sql.Date;
+
 import org.springframework.stereotype.Component;
 
 @Component("clubVO")
@@ -8,7 +10,15 @@ public class ClubVO {
 	private String group_name;
 	private String group_category;
 	private String group_info;
+	private Date group_date;
+	private String group_leader;
 	
+	public String getGroup_leader() {
+		return group_leader;
+	}
+	public void setGroup_leader(String group_leader) {
+		this.group_leader = group_leader;
+	}
 	public int getGroup_id() {
 		return group_id;
 	}
@@ -21,7 +31,12 @@ public class ClubVO {
 	public void setGroup_info(String group_info) {
 		this.group_info = group_info;
 	}
-	
+	public Date getGroup_date() {
+		return group_date;
+	}
+	public void setGroup_date(Date group_date) {
+		this.group_date = group_date;
+	}
 	public String getGroup_name() {
 		return group_name;
 	}

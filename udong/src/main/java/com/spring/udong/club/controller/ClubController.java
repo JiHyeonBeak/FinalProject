@@ -28,4 +28,6 @@ public interface ClubController {
 	public ModelAndView addClub(@ModelAttribute("info") ClubVO clubVO, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 	public ModelAndView listClub(HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
+	public ModelAndView joinClub(HttpServletRequest request,HttpServletResponse response )throws Exception;
 }

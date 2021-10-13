@@ -33,24 +33,25 @@ public class ClubControllerImpl implements ClubController{
 	private ClubService clubService;
 	@Autowired
 	private MemberVO memberVO;
+	@Autowired
+	private ClubVO clubVO;
 	
 	@RequestMapping(value="/club/home", method=RequestMethod.GET)
 	public String clubHome(Locale locale, Model model) {
 		return"clubHome";
 	}
 	
-	@RequestMapping(value="/club/joinClub", method=RequestMethod.GET)
-	public String joinClub(Locale locale, Model model) {
-		return"joinClub";
-	}
-	
-	@RequestMapping(value="/club/main", method=RequestMethod.GET)
-		public String main(Locale locale, Model model) {
+	@RequestMapping(value="/club/main", method = {RequestMethod.GET, RequestMethod.POST})
+		public String main(HttpServletRequest request, HttpServletResponse response) {
 			return"clubMain";
 		}
 	
-	@RequestMapping(value="club/add", method=RequestMethod.GET)
-	public String addClub(Locale locale, Model model) {
+	@RequestMapping(value="club/add", method = {RequestMethod.GET, RequestMethod.POST})
+	public String addClub(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession();
+		memberVO = (MemberVO)session.getAttribute("member");
+		mav.addObject("member",memberVO);
 		return "createClub";
 	}
 	
@@ -89,10 +90,14 @@ public class ClubControllerImpl implements ClubController{
 	public ModelAndView addClub(ClubVO clubVO, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 			request.setCharacterEncoding("utf-8");
+			HttpSession session = request.getSession();
+			memberVO = (MemberVO)session.getAttribute("member");
+			String id = memberVO.getId();
+			clubVO.setGroup_leader(id);
 			int result = 0;
 			result = clubService.addClub(clubVO);
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("login");
+			mav.setViewName("redirect:/club/clubList");
 			return mav;
 	}
 
@@ -162,6 +167,23 @@ public class ClubControllerImpl implements ClubController{
 		mav.addObject("modComment", modList);
 		mav.setViewName("clubMain");
 		return mav;
+	}
+
+	@Override
+	@RequestMapping(value="/club/joinClub", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView joinClub(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession();
+		memberVO = (MemberVO)session.getAttribute("member");
+		int groupid = Integer.parseInt(request.getParameter("group_id"));
+		clubVO.setGroup_id(groupid);
+		System.out.println("조인클럽 작동1");
+		clubService.joinClub(clubVO, memberVO);
+		System.out.println("조인클럽 작동2");
+		mav.setViewName("clubHome");
+		return mav;
+
 	}
 
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.udong.club.vo.ClubVO;
 import com.spring.udong.club.vo.CommentVO;
+import com.spring.udong.member.vo.MemberVO;
 
 @Repository
 public class ClubDAOImpl implements ClubDAO{
@@ -18,18 +19,21 @@ public class ClubDAOImpl implements ClubDAO{
 	@Override
 	public int insertClub(ClubVO clubVO) throws DataAccessException {
 		int result = sqlSession.insert("mapper.club.insertClub", clubVO);
+		sqlSession.selectList("insertClubMember",clubVO);
+		sqlSession.insert("mapper.club.insertLeader",clubVO);
 		return result;
-	}
-
-	@Override
-	public int updateClub(String groupid) throws DataAccessException {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	@Override
 	public List clubList() throws DataAccessException {
 		List<ClubVO> clubList = sqlSession.selectList("mapper.club.clubList");
 		return clubList;
+	}
+
+	@Override
+	public int joinClub(MemberVO memberVO, ClubVO clubVO) throws DataAccessException {
+		int result = sqlSession.insert("mapper.club.joinClubMem",clubVO);
+		sqlSession.insert("mapper.club.joinClubclub",memberVO);
+		return result;
 	}
 }

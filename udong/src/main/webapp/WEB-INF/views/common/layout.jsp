@@ -9,10 +9,6 @@
   <head>
     <meta charset="UTF-8">
     <style>
-    @font-face{
-    	font-family:"mon";
-    	src:url("../font/'TMONBlack.ttf'");
-    }
       #container {
         width: 100%;
         margin: 0px auto;
@@ -25,7 +21,6 @@
         margin-bottom: 5px;
         border: 0px solid #bcbcbc;
         background-color: lightblue;
-        font-family: "mon";
       }
       #sidebar {
         height:50px;
@@ -36,7 +31,6 @@
         border: 1px solid lightblue;
         font-size:10px;
         text-align:center;
-        font-family: "mon";
       }
       #content {
         width: 95%;
@@ -49,7 +43,6 @@
         padding: 10px;
         border: 0px solid #bcbcbc;
         background-color: lightblue;
-        font-family: "mon";
       }
       
     </style>

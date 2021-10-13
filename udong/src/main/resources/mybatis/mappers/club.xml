@@ -9,6 +9,19 @@
 		<result property="group_name" column="group_name" />
 		<result property="group_category" column="group_category" />
 		<result property="group_info" column="group_info" />
+		<result property="group_date" column="group_date"/>
+		<result property="group_leader" column="group_leader"/>
+	</resultMap> 
+	
+	<resultMap id="memResult" type="memberVO">
+		<result property="num" column="num" />
+		<result property="id" column="id" />
+        <result property="pwd" column="pwd" />
+        <result property="name" column="name" />
+        <result property="address" column="address" />
+        <result property="ph" column="ph" />
+        <result property="email" column="email" />
+        <result property="cnt" column="cnt" />
 	</resultMap> 
 	
 	<select id="clubList" resultMap="clubResult"   >
@@ -16,14 +29,37 @@
       SELECT * from udong_list order by group_id desc
     ]]>
   </select>
-    
-  <insert id="insertClub"  parameterType="clubVO">
+  
+  	<select id="insertClubMember">
+		create table mem${group_id} (member varchar2(50), rank number)
+	</select>
+    <insert id="insertLeader" parameterType="clubVO">
+    	<![CDATA[
+		 insert into mem${group_id}
+		 values(#{group_leader}, 1)
+		]]>
+    </insert>
+  	<insert id="insertClub"  parameterType="clubVO">
   		<selectKey keyProperty="group_id" order="BEFORE" resultType="int">
   			select udong_list_seq.nextval from dual
   		</selectKey>
 		<![CDATA[
-		 insert into udong_list(group_id,group_name,group_info)
-		 values(#{group_id}, #{group_name},#{group_info})
+		 insert into udong_list(group_id,group_name,group_info,group_date,group_leader)
+		 values(#{group_id}, #{group_name},#{group_info},#{group_date},#{group_leader})
 		]]>      
 	</insert>
+	
+	<insert id="joinClubMem" parameterType="int">
+		<![CDATA[
+		 insert into join#{id}
+		 values(#{group_id})
+		]]> 
+	</insert>
+	<insert id="joinClubclub" parameterType="int">
+		<![CDATA[
+		 insert into mem#{group_id}
+		 values(#{id},0)
+		]]> 
+	</insert>
+	
 </mapper>

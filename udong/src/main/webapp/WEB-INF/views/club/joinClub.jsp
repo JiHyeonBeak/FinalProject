@@ -22,7 +22,7 @@
 	<table  align="center">
 	   <tr>
 	      <td>
-	    <form action="${contextPath }/club/listClub" method="post" name="fm">
+	    <form action="${contextPath }/club/detailClub" method="post" name="fm">
 		<table>
 		<c:forEach var="club" items="${clubList}">
 		<tr><td>동아리 이름 : ${club.group_name }</td><td>
@@ -32,7 +32,7 @@
 		</table>
 		</form>
 	      </td>
-	       <td width="400"><input type="submit" value="신청하기"><input type="reset" value="홈으로"></td>
+	       <td width="400"><input type="submit" value="신청하기"></td>
 	    </tr>
 	</table>
 	</form>

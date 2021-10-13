@@ -29,16 +29,21 @@ function fn_delco(articleNo){
 </head>
 <body>
 	<form method="post" action="${contextPath}/club/addClub">
-	<h1>동아리 개설</h1>
+	<h1>모임 개설</h1>
 	<table align="center">
 		<tr>
-			<td width="200"><p align="right">동아리 이름</td>
+			<td width="200"><p align="right">모임 이름</td>
 	      	<td width="400"><input type="text" name="group_name"></td>
 		</tr>
-			<tr>
-			<td width="200"><p align="right">동아리 소개</td>
+		<tr>
+			<td width="200"><p align="right">모임장</td>
+	      	<td width="400">${member.id}</td>
+		</tr>
+		<tr>
+			<td width="200"><p align="right">모임 소개</td>
 	      	<td width="400"><textarea placeholder="내용" name="group_info" required></textarea></td>
 		</tr>
+		<tr><td width="200"><p align="right">일정</td><td><input type="date" name="group_date"></td></tr>
 		<tr>
 			<td width="200"><p align="right">카테고리</td>
 	      	<td width="400"><select name="group_category">
@@ -51,7 +56,7 @@ function fn_delco(articleNo){
 		</tr>
 		<tr>
 	       <td width="200"><p>&nbsp;</p></td>
-	       <td width="400"><input type="submit" value="만들기"><input type="button" value="홈으로"></td>
+	       <td width="400"><input type="submit" value="만들기"></td>
 	    </tr>
 	</table>
 	</form>

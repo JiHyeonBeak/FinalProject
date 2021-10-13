@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.udong.club.dao.ClubDAO;
 import com.spring.udong.club.vo.ClubVO;
+import com.spring.udong.member.vo.MemberVO;
 
 @Service
 public class ClubServiceImpl implements ClubService{
@@ -23,5 +24,10 @@ public class ClubServiceImpl implements ClubService{
 	@Override
 	public List<ClubVO> clubList() throws Exception {
 		return clubDAO.clubList();
+	}
+
+	@Override
+	public int joinClub(ClubVO clubVO, MemberVO memberVO) throws DataAccessException {
+		return clubDAO.joinClub(memberVO, clubVO);
 	}
 }

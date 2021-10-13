@@ -24,8 +24,16 @@
 		 values(#{num}, #{id}, #{pwd}, #{name}, #{address}, #{ph}, #{email})
 		]]>      
 	</insert>
+		<select id="joinList">
+		create table join${id} (club varchar2(50))
+	</select>
+    <insert id="insertMe" parameterType="memberVO">
+    	<![CDATA[
+		 insert into join${id}
+		 values(#{id})
+		]]>
+	</insert>
 	
-   
    <update id="updateMember"  parameterType="memberVO">
      <![CDATA[
 	     update udong_member
