@@ -30,4 +30,5 @@ public interface ClubController {
 	public ModelAndView listClub(HttpServletRequest request, HttpServletResponse response)throws Exception;
 	
 	public ModelAndView joinClub(HttpServletRequest request,HttpServletResponse response )throws Exception;
+	
 }

@@ -1,5 +1,6 @@
 package com.spring.udong.club.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.udong.club.vo.ClubVO;
 import com.spring.udong.club.vo.CommentVO;
+import com.spring.udong.club.vo.JoinVO;
 import com.spring.udong.member.vo.MemberVO;
 
 @Repository
@@ -31,9 +33,21 @@ public class ClubDAOImpl implements ClubDAO{
 	}
 
 	@Override
-	public int joinClub(MemberVO memberVO, ClubVO clubVO) throws DataAccessException {
-		int result = sqlSession.insert("mapper.club.joinClubMem",clubVO);
-		sqlSession.insert("mapper.club.joinClubclub",memberVO);
+	public int joinClub(JoinVO joinVO) throws DataAccessException {
+		int result = sqlSession.insert("mapper.club.joinClubMem",joinVO);
+		sqlSession.insert("mapper.club.joinClubclub",joinVO);
 		return result;
+	}
+
+	@Override
+	public List joinList(MemberVO memberVO) throws DataAccessException {
+		List joinList = (ArrayList)sqlSession.selectList("mapper.club.getJoinList",memberVO);
+		List getJoinList = new ArrayList();
+		for(int i=0 ; i <=joinList.size() ; i++) {
+			String name = (String) joinList.get(i);
+			String gname = sqlSession.selectOne("mapper.club.JoinList",name);
+			getJoinList.add(gname);
+		}
+		return getJoinList;
 	}
 }

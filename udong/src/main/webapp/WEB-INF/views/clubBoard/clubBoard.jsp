@@ -9,27 +9,44 @@
 <head>
 <meta charset="UTF-8">
 <title>동아리 메인</title>
+<link rel='stylesheet' href='../resources/font/font.css'>
 <style>
-	@font-face {
-		font-family:'mon';
-		src:url(../font/'tmon.ttf');
-		}
-		
-	table {
-	    font-family:'mon';
+	#add, #modmod, #list {
 	    text-align: center;
+	    border:1px solid #7aa5eb;
+	    width:1000px;
     }
 		
+	#add{
+		margin-bottom: 20px;
+	}
 	.hide {
 		display:none;
 	}
 	textarea {
+		margin-top:5px;
 		resize:none;
-		margin-bottom: 5px;
-		border: 1px solid #73a1eb;
+		border: 3px solid #73a1eb;
+		border-radius:20px;
 	}
-		
-    
+	
+	#addbtn {
+		width:70px;
+		height:40px;
+		font-size:20px;
+		border:0px;
+		border-radius: 12px;
+		background-color: #73a1eb;
+	}
+	
+	button:hover {
+	background-color: #488888;
+	}	
+	
+	
+    td, tr {
+    border: 1px solid #73a1eb;
+    }
 
 </style>
 <script type="text/javascript">
@@ -102,9 +119,9 @@ function fn_like(articleNo){
 <body><center>
 	<form action="${contextPath }/club/addComment" method="post" name="fm">
 	<h1>오늘의 이야기...</h1>
-	<table>
-	<tr><td>제목 : </td><td><textarea row="1" col="5" name="articleTitle"></textarea><td><input type="button" value="입력" onclick="fn_addco()"></td></tr>
-	<tr><td>내용 : </td><td><textarea row="4" col="5" name="articleContent"></textarea></tr>
+	<table id="add">
+	<tr><td>제목 : </td><td><textarea rows="1" cols="100" name="articleTitle"></textarea><td rowspan="2"><input type="button" id="addbtn" value="입력" onclick="fn_addco()"></td></tr>
+	<tr><td>내용 : </td><td><textarea rows="4" cols="100" name="articleContent"></textarea></tr>
 	</table>
 	</form>
 	
@@ -126,8 +143,7 @@ function fn_like(articleNo){
 	<tr><td>내용 : ${com.articleContent }</td></tr>
 	<tr><td>좋아요 : ${com.articleLike }</td></tr>
 	<tr><td>싫어요 : ${com.articleHate }</td></tr>
-	<tr><td><input type="button" value="좋아요"  onclick="fn_like(${com.articleNo})"></td><td><input type="button" value="싫어요"  onclick=""></td></tr>
-	<tr><td>ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</td><td>ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</td></tr>
+	<tr id='last'><td><input type="button" value="좋아요"  onclick="fn_like(${com.articleNo})"></td><td><input type="button" value="싫어요"  onclick=""></td></tr>
 	</c:forEach>
 	</table></center>
 </body>

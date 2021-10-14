@@ -77,24 +77,24 @@ public class MemberControllerImpl implements MemberController{
 
 	@Override
 	@RequestMapping(value="/member/modMember",method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView modMember(String id, HttpServletRequest request, HttpServletResponse response)
+	public ModelAndView modMember(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
-		id = request.getParameter("id");
+		HttpSession session = request.getSession();
+		memberVO = (MemberVO)session.getAttribute("member");
 		String pwd = request.getParameter("pwd");
 		String address = request.getParameter("address");
 		String email = request.getParameter("email");
 		String ph = request.getParameter("ph");
-		memberVO.setId(id);
 		memberVO.setPwd(pwd);
 		memberVO.setAddress(address);
 		memberVO.setEmail(email);
 		memberVO.setPh(ph);
 		System.out.println("id:"+memberVO.getId());
-		System.out.println("email:"+email);
-		System.out.println("pwd:"+pwd);
-		System.out.println("ph:"+ph);
-		System.out.println("address:"+address);
+		System.out.println("email:"+memberVO.getEmail());
+		System.out.println("pwd:"+memberVO.getPwd());
+		System.out.println("ph:"+memberVO.getPh());
+		System.out.println("address:"+memberVO.getAddress());
 		memberService.updateMember(memberVO);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("main");

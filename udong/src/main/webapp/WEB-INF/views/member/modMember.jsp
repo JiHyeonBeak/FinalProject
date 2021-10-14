@@ -13,6 +13,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 정보 수정창</title>
+<link rel='stylesheet' href='../resources/font/font.css'>
 <script type="text/javascript">
 
 function fn_mod(id){

@@ -9,22 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <title>동아리 개설</title>
+<link rel='stylesheet' href='../resources/font/font.css'>
 <script type="text/javascript">
-function fn_delco(articleNo){
-	 var form = document.createElement("form");
-	 form.removeAttribute("method");
-	 form.setAttribute("method", "post");
-	 form.setAttribute("action", "${contextPath}/club/delComment");
-    var articleNOInput = document.createElement("input");
-    articleNOInput.setAttribute("type","hidden");
-    articleNOInput.setAttribute("name","articleNo");
-    articleNOInput.setAttribute("value", articleNo);
-	 
-    form.appendChild(articleNOInput);
-    document.body.appendChild(form);
-    form.submit();
-}
-
 </script>
 </head>
 <body>
@@ -41,17 +27,17 @@ function fn_delco(articleNo){
 		</tr>
 		<tr>
 			<td width="200"><p align="right">모임 소개</td>
-	      	<td width="400"><textarea placeholder="내용" name="group_info" required></textarea></td>
+	      	<td width="400"><textarea name="group_info" required></textarea></td>
 		</tr>
 		<tr><td width="200"><p align="right">일정</td><td><input type="date" name="group_date"></td></tr>
 		<tr>
 			<td width="200"><p align="right">카테고리</td>
 	      	<td width="400"><select name="group_category">
-	      	<option value="culture">언어/문화</option>
-	      	<option value="sports">스포츠</option>
-	      	<option value="social">친목</option>
-	      	<option value="trip">여행</option>
-	      	<option value="game">게임</option>
+	      	<option value="언어/문화">언어/문화</option>
+	      	<option value="스포츠">스포츠</option>
+	      	<option value="친목">친목</option>
+	      	<option value="여행">여행</option>
+	      	<option value="게임">게임</option>
 	      	</select></td>
 		</tr>
 		<tr>

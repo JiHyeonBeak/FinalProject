@@ -8,19 +8,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.udong.club.service.ClubService;
 import com.spring.udong.club.service.CommentService;
 import com.spring.udong.club.vo.ClubVO;
 import com.spring.udong.club.vo.CommentVO;
+import com.spring.udong.club.vo.JoinVO;
 import com.spring.udong.member.vo.MemberVO;
 
 @Controller("clubController")
@@ -34,7 +33,7 @@ public class ClubControllerImpl implements ClubController{
 	@Autowired
 	private MemberVO memberVO;
 	@Autowired
-	private ClubVO clubVO;
+	private JoinVO joinVO;
 	
 	@RequestMapping(value="/club/home", method=RequestMethod.GET)
 	public String clubHome(Locale locale, Model model) {
@@ -92,7 +91,9 @@ public class ClubControllerImpl implements ClubController{
 			request.setCharacterEncoding("utf-8");
 			HttpSession session = request.getSession();
 			memberVO = (MemberVO)session.getAttribute("member");
+			String category = request.getParameter("group_category");
 			String id = memberVO.getId();
+			clubVO.setGroup_category(category);
 			clubVO.setGroup_leader(id);
 			int result = 0;
 			result = clubService.addClub(clubVO);
@@ -117,8 +118,12 @@ public class ClubControllerImpl implements ClubController{
 	@RequestMapping(value="/club/clubList",method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listClub(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession();
+		memberVO = (MemberVO)session.getAttribute("member");
+		List joinList = clubService.joinList(memberVO);
 		List clubList = clubService.clubList();
 		mav.addObject("clubList",clubList);
+		mav.addObject("joinList",joinList);
 		mav.setViewName("clubHome");
 		return mav;
 	}
@@ -177,11 +182,10 @@ public class ClubControllerImpl implements ClubController{
 		HttpSession session = request.getSession();
 		memberVO = (MemberVO)session.getAttribute("member");
 		int groupid = Integer.parseInt(request.getParameter("group_id"));
-		clubVO.setGroup_id(groupid);
-		System.out.println("조인클럽 작동1");
-		clubService.joinClub(clubVO, memberVO);
-		System.out.println("조인클럽 작동2");
-		mav.setViewName("clubHome");
+		joinVO.setGroup_id(groupid);
+		joinVO.setId(memberVO.getId());
+		clubService.joinClub(joinVO);
+		mav.setViewName("redirect:/club/clubList");
 		return mav;
 
 	}

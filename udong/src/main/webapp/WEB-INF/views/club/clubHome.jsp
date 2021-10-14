@@ -9,14 +9,16 @@
 <head>
 <meta charset="UTF-8">
 <title>동아리 활동</title>
+<link rel='stylesheet' href='../resources/font/font.css'>
 <style>
 	#grp {
 		display: inline;
 	}
 </style>
+
 <script type="text/javascript">
 function fn_join(group_name,group_id){
-	if(confirm(group_name+"에 가입하시겠습니까?")){
+	if(confirm(group_name+"에 참여하시겠습니까?")){
 		fm.removeAttribute("action");
 		fm.setAttribute("action", "${contextPath}/club/joinClub");
 		var gid = document.createElement("input");
@@ -43,7 +45,16 @@ function fn_join(group_name,group_id){
 	<tr><td>--------------------------</td></tr>
 	</c:forEach>
 	</table>
-	</form>
 <h2>참여한 모임</h2>
+	<table id="grp2">
+	<c:forEach var="join" items="${joinList}">
+	<tr><td>모임 이름 : </td><td>${join.group_name }</td><td><input type="button" onclick="fn_join('${club.group_name}','${club.group_id}')" value="모임으로"></td></tr>	
+	<tr><td>모임 일정 : </td><td>${join.group_date }</td></tr>
+	<tr><td>카테고리 : ${join.group_category }</td></tr>
+	<tr><td>모임 소개 : ${join.group_info }</td></tr>
+	<tr><td>--------------------------</td></tr>
+	</c:forEach>
+	</table>
+	</form>
 </body>
 </html>

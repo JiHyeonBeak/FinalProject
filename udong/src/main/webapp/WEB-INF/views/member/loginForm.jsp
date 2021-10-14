@@ -12,6 +12,7 @@
 <head>
   <meta charset="UTF-8">
 <title>로그인창</title>
+<link rel='stylesheet' href='../resources/font/font.css'>
 <style>
 	#login{
 		padding : 15px;

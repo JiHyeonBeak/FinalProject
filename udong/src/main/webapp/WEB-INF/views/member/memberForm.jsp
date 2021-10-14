@@ -10,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 가입창</title>
+<link rel='stylesheet' href='../resources/font/font.css'>
 <style>
    .text_center{
      text-align:center;

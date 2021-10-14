@@ -12,6 +12,7 @@
 <head>
   <meta charset="UTF-8">
   <title>메인 페이지</title>
+  <link rel='stylesheet' href='./resources/font/font.css'>
   <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
