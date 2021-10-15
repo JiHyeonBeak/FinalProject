@@ -40,12 +40,12 @@ public class ClubDAOImpl implements ClubDAO{
 	}
 
 	@Override
-	public List joinList(MemberVO memberVO) throws DataAccessException {
+	public List<ClubVO> joinList(MemberVO memberVO) throws DataAccessException {
 		List joinList = (ArrayList)sqlSession.selectList("mapper.club.getJoinList",memberVO);
-		List getJoinList = new ArrayList();
+		List<ClubVO> getJoinList = new ArrayList();
 		for(int i=0 ; i <=joinList.size() ; i++) {
 			String name = (String) joinList.get(i);
-			String gname = sqlSession.selectOne("mapper.club.JoinList",name);
+			ClubVO gname = (ClubVO) sqlSession.selectList("mapper.club.JoinList",name);
 			getJoinList.add(gname);
 		}
 		return getJoinList;

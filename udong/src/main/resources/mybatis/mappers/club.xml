@@ -18,21 +18,20 @@
 		<result property="id" column="id" />
 	</resultMap>
 	
-	<select id="clubList" resultMap="clubResult"   >
-    <![CDATA[
-      SELECT * from udong_list order by group_id desc
-    ]]>
-  	</select>
-  	
-  	<select id="getJoinList" resultMap="List"   >
+	<select id="getJoinList" resultType="String">
     <![CDATA[
       SELECT * from join${id}
     ]]>
   	</select>
-  	
-  	<select id="JoinList" resultMap="String"   >
+  	<select id="JoinList" resultType="clubVO">
     <![CDATA[
       SELECT * from udong_list where group_id=#{name};
+    ]]>
+  	</select>
+	
+	<select id="clubList" resultMap="clubResult"   >
+    <![CDATA[
+      SELECT * from udong_list order by group_id desc
     ]]>
   	</select>
   

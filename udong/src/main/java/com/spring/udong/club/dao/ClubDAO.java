@@ -12,5 +12,5 @@ public interface ClubDAO {
 	public int insertClub(ClubVO clubVO)throws DataAccessException;
 	public List clubList() throws DataAccessException;
 	public int joinClub(JoinVO joinVO)throws DataAccessException;
-	public List joinList(MemberVO memberVO) throws DataAccessException;
+	public List<ClubVO> joinList(MemberVO memberVO) throws DataAccessException;
 }

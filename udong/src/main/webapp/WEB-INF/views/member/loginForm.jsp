@@ -18,11 +18,6 @@
 		padding : 15px;
 		margin: 5px;
 	}
-	#fm {
-		border: 1px solid #73a1eb;
-		width:500px;
-		height:500px;
-	}
 	table {
 		padding: 30px;
 	}
@@ -30,17 +25,24 @@
 		position: relative;
 		top: 30px;
 	}
-	h1 {
-		color: #73a1eb;
-	}
 	
 	#loginbtn {
 		border : 0px;
 		border-radius: 12px;
 		background-color: #73a1eb;
-		width: 100px;
-		height:50px;
-		font-size: 20px;
+		width: 80px;
+		height:30px;
+		font-size: 15px;
+		margin-top: 20px;
+		margin-bottom:100px;
+		color: #ffffff;
+	}
+	
+	input {
+		margin-top:5px;
+		resize:none;
+		border: 3px solid #73a1eb;
+		border-radius:20px;
 	}
 
 </style>

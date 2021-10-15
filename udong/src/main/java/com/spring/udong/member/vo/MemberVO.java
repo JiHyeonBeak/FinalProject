@@ -11,7 +11,6 @@ public class MemberVO {
 	private String address;
 	private String ph;
 	private String email;
-	private int cnt;
 	
 	public int getNum() {
 		return num;
@@ -55,13 +54,5 @@ public class MemberVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getCnt() {
-		return cnt;
-	}
-	public void setCnt(int cnt) {
-		this.cnt = cnt;
-	}
-	
-	
 
 }

@@ -12,7 +12,6 @@
         <result property="address" column="address" />
         <result property="ph" column="ph" />
         <result property="email" column="email" />
-        <result property="cnt" column="cnt" />
 	</resultMap> 
     
   <insert id="insertMember"  parameterType="memberVO">
@@ -44,7 +43,7 @@
 	]]>      
   </delete>
   
-  <select id="loginMember"  resultType="memberVO"   parameterType="memberVO" >
+  <select id="loginMember"  resultType="memberVO"  parameterType="memberVO" >
 	<![CDATA[
 		select * from udong_member	
 		where id=#{id} and pwd=#{pwd}		
