@@ -25,10 +25,9 @@
   	</select>
   	<select id="JoinList" resultType="clubVO">
     <![CDATA[
-      SELECT * from udong_list where group_id=#{name};
+      SELECT * from udong_list where group_id=#{name}
     ]]>
   	</select>
-	
 	<select id="clubList" resultMap="clubResult"   >
     <![CDATA[
       SELECT * from udong_list order by group_id desc
@@ -54,7 +53,23 @@
 		 values(#{group_leader}, 1)
 		]]>
     </insert>
-  	
+    <select id="addClubBoard">
+		create table board${group_id} (
+    	article_no number primary key,
+    	article_title varchar2(1000),
+    	article_content varchar2(4000),
+    	article_date varchar2(100),
+    	article_id varchar2(100)
+    	
+		)
+	</select>
+	
+  	<insert id="joinClubLeader" parameterType="joinVO">
+		<![CDATA[
+		 insert into join${group_leader}(club)
+		 values(#{group_id})
+		]]> 
+	</insert>
 	<insert id="joinClubMem" parameterType="joinVO">
 		<![CDATA[
 		 insert into join${id}(club)

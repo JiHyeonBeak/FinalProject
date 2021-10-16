@@ -13,9 +13,9 @@
 <body>
 	
 	<table>
-	<c:forEach var="board" items="#">
+	<c:forEach var="board" items="${boardList }">
 	<tr><td><input type="button" value="삭제"  onclick="#"></td></tr>
-	<tr><td>제목 : ${board.articleTitle }</td><td> ${board.wdate }</td></tr>
+	<tr><td>제목 : ${board.articleTitle }</td><td> ${board.articeDate }</td></tr>
 	<tr><td>작성자 : ${board.articleId }</td></tr>
 	<tr><td>내용 : ${board.articleContent }</td></tr>
 	</c:forEach>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.board">
+	<resultMap id="boardResult" type="boardVO">
+		<result property="article_no" column="article_no" />
+		<result property="article_title" column="article_title" />
+		<result property="article_content" column="article_content" />
+		<result property="article_date" column="article_date" />
+		<result property="article_id" column="article_id" />
+	</resultMap> 
+	
+	<select id="boardList" resultMap="boardResult"   >
+    <![CDATA[
+      SELECT * from board${groupId} order by article_no desc
+    ]]>
+  	</select>
+	
+  	<insert id="insertBoard"  parameterType="boardVO">
+  		<selectKey keyProperty="article_no" order="BEFORE" resultType="int">
+  			select udong_eaboard_seq.nextval from dual
+  		</selectKey>
+		<![CDATA[
+		 insert into board${groupId}(article_no,article_title,article_content,article_date,article_id)
+		 values(#{article_no}, #{article_title},#{article_content},#{aritcle_date},#{article_id})
+		]]>      
+	</insert>
+	
+</mapper>

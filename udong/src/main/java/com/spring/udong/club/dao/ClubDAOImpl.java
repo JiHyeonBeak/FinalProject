@@ -22,7 +22,9 @@ public class ClubDAOImpl implements ClubDAO{
 	public int insertClub(ClubVO clubVO) throws DataAccessException {
 		int result = sqlSession.insert("mapper.club.insertClub", clubVO);
 		sqlSession.selectList("insertClubMember",clubVO);
+		sqlSession.selectList("addClubBoard",clubVO);
 		sqlSession.insert("mapper.club.insertLeader",clubVO);
+		sqlSession.insert("mapper.club.joinClubLeader",clubVO);
 		return result;
 	}
 
@@ -42,11 +44,14 @@ public class ClubDAOImpl implements ClubDAO{
 	@Override
 	public List<ClubVO> joinList(MemberVO memberVO) throws DataAccessException {
 		List joinList = (ArrayList)sqlSession.selectList("mapper.club.getJoinList",memberVO);
-		List<ClubVO> getJoinList = new ArrayList();
-		for(int i=0 ; i <=joinList.size() ; i++) {
+		List<ClubVO> getJoinList = new ArrayList<ClubVO>();
+		for(int i=0 ; i < joinList.size() ; i++) {
 			String name = (String) joinList.get(i);
-			ClubVO gname = (ClubVO) sqlSession.selectList("mapper.club.JoinList",name);
-			getJoinList.add(gname);
+			List<ClubVO> joinName = new ArrayList<ClubVO>();
+			System.out.println("name값:"+name);
+			joinName = sqlSession.selectList("mapper.club.JoinList",name);
+			System.out.println("joinName값:"+joinName);
+			getJoinList.addAll(joinName);
 		}
 		return getJoinList;
 	}

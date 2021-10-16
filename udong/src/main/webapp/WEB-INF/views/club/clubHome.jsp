@@ -31,10 +31,20 @@ function fn_join(group_name,group_id){
 		
 	}
 }
+function fn_eachClub(group_id){
+	fm.removeAttribute("action");
+	fm.setAttribute("action", "${contextPath}/club/eachClubBoard");
+	var gid = document.createElement("input");
+	gid.setAttribute("name","group_id");
+	gid.setAttribute("type","hidden");
+	gid.setAttribute("value",group_id);
+	fm.appendChild(gid);
+	fm.submit();
+}
 </script>
 </head>
 <body>
-<h2>참여 가능 모임</h2>
+<h2>개설된 모임</h2>
 	<form action="${contextPath }/club/listClub" method="post" name="fm">
 	<table id="grp">
 	<c:forEach var="club" items="${clubList}">
@@ -48,7 +58,7 @@ function fn_join(group_name,group_id){
 <h2>참여한 모임</h2>
 	<table id="grp2">
 	<c:forEach var="join" items="${joinList}">
-	<tr><td>모임 이름 : </td><td>${join.group_name }</td><td><input type="button" onclick="fn_join('${club.group_name}','${club.group_id}')" value="모임으로"></td></tr>	
+	<tr><td>모임 이름 : </td><td>${join.group_name }</td><td><input type="button" onclick="fn_eachClub('${club.group_id}')" value="모임으로"></td></tr>	
 	<tr><td>모임 일정 : </td><td>${join.group_date }</td></tr>
 	<tr><td>카테고리 : ${join.group_category }</td></tr>
 	<tr><td>모임 소개 : ${join.group_info }</td></tr>

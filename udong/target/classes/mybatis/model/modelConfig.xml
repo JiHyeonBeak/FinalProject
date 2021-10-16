@@ -8,5 +8,6 @@
 		<typeAlias type="com.spring.udong.club.vo.CommentVO"  alias="commentVO" />
 		<typeAlias type="com.spring.udong.club.vo.ClubVO"  alias="clubVO" />
 		<typeAlias type="com.spring.udong.club.vo.JoinVO"  alias="joinVO" />
+		<typeAlias type="com.spring.udong.club.vo.BoardVO"  alias="boardVO" />
 	</typeAliases>
 </configuration>

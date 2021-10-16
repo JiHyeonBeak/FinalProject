@@ -25,5 +25,10 @@
       <put-attribute name="title" value="우리동네 동아리, 우동" />
       <put-attribute name="body" value="/WEB-INF/views/club/createClub.jsp" />
     </definition>
+    
+    <definition name="eachClub" extends="baseLayout">
+      <put-attribute name="title" value="우리동네 동아리, 우동" />
+      <put-attribute name="body" value="/WEB-INF/views/club/eachClub.jsp" />
+    </definition>
 
 </tiles-definitions>

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.udong.club.service.BoardService;
 import com.spring.udong.club.service.ClubService;
 import com.spring.udong.club.service.CommentService;
 import com.spring.udong.club.vo.ClubVO;
@@ -27,13 +28,15 @@ public class ClubControllerImpl implements ClubController{
 	@Autowired
 	private CommentService commentService;
 	@Autowired
-	private CommentVO commentVO;
+	private BoardService boardService;
 	@Autowired
 	private ClubService clubService;
 	@Autowired
 	private MemberVO memberVO;
 	@Autowired
 	private JoinVO joinVO;
+	@Autowired
+	private CommentVO commentVO;
 	
 	@RequestMapping(value="/club/home", method=RequestMethod.GET)
 	public String clubHome(Locale locale, Model model) {
@@ -188,6 +191,17 @@ public class ClubControllerImpl implements ClubController{
 		mav.setViewName("redirect:/club/clubList");
 		return mav;
 
+	}
+
+	@Override
+	@RequestMapping(value="/club/eachClubBoard", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView eachClubBoard(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		int groupid = Integer.parseInt(request.getParameter("group_id"));
+		List boardList = boardService.listBoard(groupid);
+		mav.addObject("boardList",boardList);
+		mav.setViewName("eachClub");
+		return mav;
 	}
 
 
