@@ -58,7 +58,7 @@ function fn_eachClub(group_id){
 <h2>참여한 모임</h2>
 	<table id="grp2">
 	<c:forEach var="join" items="${joinList}">
-	<tr><td>모임 이름 : </td><td>${join.group_name }</td><td><input type="button" onclick="fn_eachClub('${club.group_id}')" value="모임으로"></td></tr>	
+	<tr><td>모임 이름 : </td><td>${join.group_name }</td><td><input type="button" onclick="fn_eachClub('${join.group_id}')" value="모임으로"></td></tr>	
 	<tr><td>모임 일정 : </td><td>${join.group_date }</td></tr>
 	<tr><td>카테고리 : ${join.group_category }</td></tr>
 	<tr><td>모임 소개 : ${join.group_info }</td></tr>

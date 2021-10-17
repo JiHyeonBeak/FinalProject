@@ -8,18 +8,16 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.spring.udong.club.vo.BoardVO;
+import com.spring.udong.club.vo.JoinVO;
 
 @Repository("boardDAO")
 public class BoardDAOImpl implements BoardDAO{
 	@Autowired
 	private SqlSession sqlSession;
-	@Autowired
-	private BoardDAO boardDAO;
-	
 	
 	@Override
-	public List boardList(int groupId) throws DataAccessException {
-		List<BoardDAO> boardList = sqlSession.selectList("mapper.board.boardList",groupId);
+	public List boardList(JoinVO joinVO) throws DataAccessException {
+		List<BoardDAO> boardList = sqlSession.selectList("mapper.board.boardList",joinVO);
 		return boardList;
 	}
 

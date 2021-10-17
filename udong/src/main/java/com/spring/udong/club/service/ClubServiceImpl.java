@@ -13,7 +13,6 @@ import com.spring.udong.member.vo.MemberVO;
 
 @Service
 public class ClubServiceImpl implements ClubService{
-
 	@Autowired
 	private ClubDAO clubDAO;
 	

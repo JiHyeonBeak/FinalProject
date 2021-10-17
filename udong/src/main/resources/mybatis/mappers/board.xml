@@ -12,9 +12,9 @@
 		<result property="article_id" column="article_id" />
 	</resultMap> 
 	
-	<select id="boardList" resultMap="boardResult"   >
+	<select id="boardList" resultMap="boardResult" parameterType="joinVO"  >
     <![CDATA[
-      SELECT * from board${groupId} order by article_no desc
+      SELECT * from board${group_id}
     ]]>
   	</select>
 	

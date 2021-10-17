@@ -9,8 +9,19 @@
 <head>
 <meta charset="UTF-8">
 <title>각 클럽 게시판</title>
+<script type="text/javascript">
+
+
+</script>
 </head>
 <body>
+
+	<form action="${contextPath }/club/addBoard" method="post" name="fm">
+	<table id="add">
+	<tr><td>제목 : </td><td><textarea rows="1" cols="100" name="articleTitle"></textarea><td rowspan="2"><input type="submit" value="입력"></td></tr>
+	<tr><td>내용 : </td><td><textarea rows="4" cols="100" name="articleContent"></textarea></tr>
+	</table>
+	</form>
 	
 	<table>
 	<c:forEach var="board" items="${boardList }">

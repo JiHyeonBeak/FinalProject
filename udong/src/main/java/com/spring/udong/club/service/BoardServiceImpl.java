@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.udong.club.dao.BoardDAO;
 import com.spring.udong.club.vo.BoardVO;
+import com.spring.udong.club.vo.JoinVO;
 
 @Service("boardService")
 public class BoardServiceImpl implements BoardService{
@@ -14,8 +15,8 @@ public class BoardServiceImpl implements BoardService{
 	private BoardDAO boardDAO;
 	
 	@Override
-	public List<BoardVO> listBoard(int groupId) throws Exception {
-		List<BoardVO> boardList = boardDAO.boardList(groupId);
+	public List<BoardVO> listBoard(JoinVO joinVO) throws Exception {
+		List<BoardVO> boardList = boardDAO.boardList(joinVO);
 		return boardList;
 	}
 

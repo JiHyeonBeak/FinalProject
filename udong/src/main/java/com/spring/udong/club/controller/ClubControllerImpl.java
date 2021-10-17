@@ -197,8 +197,9 @@ public class ClubControllerImpl implements ClubController{
 	@RequestMapping(value="/club/eachClubBoard", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView eachClubBoard(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		int groupid = Integer.parseInt(request.getParameter("group_id"));
-		List boardList = boardService.listBoard(groupid);
+		int groupId = Integer.parseInt(request.getParameter("group_id"));
+		joinVO.setGroup_id(groupId);
+		List boardList = boardService.listBoard(joinVO);
 		mav.addObject("boardList",boardList);
 		mav.setViewName("eachClub");
 		return mav;
