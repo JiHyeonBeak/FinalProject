@@ -22,8 +22,10 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public int addBoard(BoardVO boardVO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = boardDAO.insertBoard(boardVO);
+		return result;
 	}
+
+	
 
 }

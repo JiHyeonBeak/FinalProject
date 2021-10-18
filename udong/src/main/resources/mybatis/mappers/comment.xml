@@ -59,14 +59,5 @@
 	     where articleNo=#{articleNo}
       ]]>      
    </update> 
-   
-   <update id="dislike"  parameterType="commentVO">
-     <![CDATA[
-	     update udong_board
-	     set articleHate=articleHate+1
-	     where articleNo=#{articleNo}
-      ]]>      
-   </update> 
-
 
 </mapper>

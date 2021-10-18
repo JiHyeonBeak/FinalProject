@@ -10,12 +10,13 @@
 		<put-attribute name="body" value="/" />
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
-	<definition name="main" extends="baseLayout">
+	
+	<definition name="main" template="/WEB-INF/views/common/mainLayout.jsp">
 		<put-attribute name="title" value="우리동네 동아리, 우동" />
 		<put-attribute name="body" value="/WEB-INF/views/main.jsp" />
 	</definition>
 	
-	<definition name="join" extends="baseLayout">
+	<definition name="join" template="/WEB-INF/views/common/mainLayout.jsp">
       <put-attribute name="title" value="우리동네 동아리, 우동" />
       <put-attribute name="body" value="/WEB-INF/views/member/memberForm.jsp" />
     </definition>
@@ -25,7 +26,7 @@
       <put-attribute name="body" value="/WEB-INF/views/member/modMember.jsp" />
     </definition>
     
-    <definition name="login" extends="baseLayout">
+    <definition name="login" template="/WEB-INF/views/common/mainLayout.jsp">
       <put-attribute name="title" value="우리동네 동아리, 우동" />
       <put-attribute name="body" value="/WEB-INF/views/member/loginForm.jsp" />
     </definition>

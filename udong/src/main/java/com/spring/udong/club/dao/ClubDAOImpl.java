@@ -48,9 +48,7 @@ public class ClubDAOImpl implements ClubDAO{
 		for(int i=0 ; i < joinList.size() ; i++) {
 			String name = (String) joinList.get(i);
 			List<ClubVO> joinName = new ArrayList<ClubVO>();
-			System.out.println("name값:"+name);
 			joinName = sqlSession.selectList("mapper.club.JoinList",name);
-			System.out.println("joinName값:"+joinName);
 			getJoinList.addAll(joinName);
 		}
 		return getJoinList;

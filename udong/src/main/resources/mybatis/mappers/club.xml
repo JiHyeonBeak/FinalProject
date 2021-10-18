@@ -58,7 +58,7 @@
     	article_no number primary key,
     	article_title varchar2(1000),
     	article_content varchar2(4000),
-    	article_date varchar2(100),
+    	article_date date default sysdate,
     	article_id varchar2(100)
     	
 		)

@@ -14,25 +14,43 @@
 <title>로그인창</title>
 <link rel='stylesheet' href='../resources/font/font.css'>
 <style>
+	#fm{
+		position: relative;
+		top:140px;
+	}
 	#login{
 		padding : 15px;
 		margin: 5px;
 	}
 	table {
-		padding: 30px;
+		padding: 20px;
 	}
 	tr {
 		position: relative;
-		top: 30px;
 	}
-	
+	td{
+		font-size: 20px;
+	}
+	h1{
+		color:#73a1eb;
+		font-size:50px;
+		font-weight: 5000;
+	}
+	h4{
+		color:#73a1eb;
+		font-size:30px;
+		font-weight: 5000;
+		animation-name: h4;
+  		animation-duration:5s;
+	}
 	#loginbtn {
 		border : 0px;
 		border-radius: 12px;
 		background-color: #73a1eb;
-		width: 80px;
-		height:30px;
-		font-size: 15px;
+		width: 180px;
+		height:40px;
+		font-size: 20px;
+		font-weight:300;
 		margin-top: 20px;
 		margin-bottom:100px;
 		color: #ffffff;
@@ -40,9 +58,23 @@
 	
 	input {
 		margin-top:5px;
+		width:150px;
+		height:20px;
 		resize:none;
 		border: 3px solid #73a1eb;
 		border-radius:20px;
+	}
+	@keyframes h4 {
+	0%{
+		opacity:0%;
+	}
+	50% {
+		opacity:50%;
+		color: #a0d5f2;
+	}
+	100%{
+		opacity:100%;
+	}
 	}
 
 </style>
@@ -58,9 +90,10 @@
 </head>
 
 <body>
-<center><form name="frmLogin" method="post"  action="${contextPath}/member/login">
+<form name="frmLogin" method="post"  action="${contextPath}/member/login">
 	<div align="center" id="fm">
-	<h1> Log In </h1>
+	<h4>우 리 동 네 동 아 리</h4>
+	<h1> 로그인 </h1>
    <table id="login" align="center" >
       <tr align="center">
          <td>아이디</td><td><input type="text" name="id" value="" size="20"></td>
@@ -73,6 +106,6 @@
       </tr>
    </table>
    </div>
-</form></center>
+</form>
 </body>
 </html>

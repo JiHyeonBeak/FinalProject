@@ -42,11 +42,23 @@
 	   id=#{id}
 	]]>      
   </delete>
+  <update id="dropMember"  parameterType="String">
+     <![CDATA[
+	     drop table join${id}
+      ]]>      
+   </update> 
   
   <select id="loginMember"  resultType="memberVO"  parameterType="memberVO" >
 	<![CDATA[
 		select * from udong_member	
 		where id=#{id} and pwd=#{pwd}		
+	]]>
+  </select>
+  
+  <select id="joinCheck"  resultType="memberVO"  parameterType="string" >
+	<![CDATA[
+		select * from udong_member	
+		where id=#{id}		
 	]]>
   </select>
 

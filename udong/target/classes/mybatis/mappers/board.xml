@@ -5,11 +5,11 @@
 
 <mapper namespace="mapper.board">
 	<resultMap id="boardResult" type="boardVO">
-		<result property="article_no" column="article_no" />
-		<result property="article_title" column="article_title" />
-		<result property="article_content" column="article_content" />
-		<result property="article_date" column="article_date" />
-		<result property="article_id" column="article_id" />
+		<result property="articleNo" column="article_no" />
+		<result property="articleTitle" column="article_title" />
+		<result property="articleContent" column="article_content" />
+		<result property="articleDate" column="article_date" />
+		<result property="articleId" column="article_id" />
 	</resultMap> 
 	
 	<select id="boardList" resultMap="boardResult" parameterType="joinVO"  >
@@ -18,13 +18,13 @@
     ]]>
   	</select>
 	
-  	<insert id="insertBoard"  parameterType="boardVO">
-  		<selectKey keyProperty="article_no" order="BEFORE" resultType="int">
+  	<insert id="addBoard"  parameterType="boardVO">
+  		<selectKey keyProperty="articleNo" order="BEFORE" resultType="int" >
   			select udong_eaboard_seq.nextval from dual
   		</selectKey>
 		<![CDATA[
-		 insert into board${groupId}(article_no,article_title,article_content,article_date,article_id)
-		 values(#{article_no}, #{article_title},#{article_content},#{aritcle_date},#{article_id})
+		 insert into board${groupId}(article_no,article_title,article_content,article_id)
+		 values(#{articleNo}, #{articleTitle},#{articleContent},#{articleId})
 		]]>      
 	</insert>
 	

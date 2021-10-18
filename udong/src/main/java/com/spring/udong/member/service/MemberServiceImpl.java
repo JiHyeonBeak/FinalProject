@@ -32,4 +32,9 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.loginMember(memberVO);
 	}
 
+	@Override
+	public int joinCheck(MemberVO memberVO) throws DataAccessException {
+		return memberDAO.joinCheck(memberVO);
+	}
+
 }

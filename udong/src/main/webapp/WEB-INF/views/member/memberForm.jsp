@@ -11,25 +11,57 @@
 <meta charset="UTF-8">
 <title>회원 가입창</title>
 <link rel='stylesheet' href='../resources/font/font.css'>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+
+function fn_chk(){
+	$.ajax({
+		url : "${contextPath}/joinCheck",
+		method : "POST",
+		data : {"id" : $("#id").val()},
+		success : function(data){
+			if(data >= 1){
+				alert("중복된 아이디입니다.");
+			}else if(data == 0){
+				alert("사용 가능한 아이디입니다.");
+			}
+		}
+})
+}
+
+
+</script>
 <style>
    .text_center{
      text-align:center;
+     color: white;
    }
+   body {
+   	background-color: #90d0f0;
+   }
+   	#memfm {
+		width:550px;
+		height:550px;
+		border:4px solid #ffffff;
+		position: relative;
+		top:100px;
+		left:500px;
+	}
    
    #subm {
 		border : 0px;
 		border-radius: 22px;
-		background-color: #73a1eb;
-		width: 100px;
-		height:50px;
-		font-size: 20px;
-		color: #ffffff;
+		background-color: #ffffff;
+		width: 80px;
+		height:40px;
+		font-size: 12px;
+		font-weight:800;
+		color: #5a8de6;
 		position: relative;
-		right:100px;
+		right:60px;
 		top:10px;
 		margin-bottom:70px;
 	}
-   
    	input {
 		margin-top:5px;
 		border: 3px solid #73a1eb;
@@ -44,7 +76,8 @@
 	<table  align="center">
 	   <tr>
 	      <td width="100"><p align="right">아이디</td>
-	      <td width="200"><input type="text" name="id"></td>
+	      <td width="200"><input type="text" name="id" id="id"></td>
+	      <td><input type="button" value="중복확인" id="chk" onclick="fn_chk()"></td>
 	   </tr>
 	   <tr>
 	      <td width="100"><p align="right">비밀번호</td>

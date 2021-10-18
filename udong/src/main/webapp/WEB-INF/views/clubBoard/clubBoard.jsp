@@ -9,9 +9,10 @@
 <head>
 <meta charset="UTF-8">
 <title>동아리 메인</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <link rel='stylesheet' href='../resources/font/font.css'>
 <style>
-	#add, #modmod, #list {
+	#modmod{
 	    text-align: center;
 	    border:1px solid #7aa5eb;
 	    width:1000px;
@@ -38,15 +39,10 @@
 		border-radius: 12px;
 		background-color: #73a1eb;
 	}
-	
-	button:hover {
-	background-color: #488888;
+	#line{
+		border:1px solid #033894;
+		margin: 30px;
 	}	
-	
-	
-    td, tr {
-    border: 1px solid #73a1eb;
-    }
 
 </style>
 <script type="text/javascript">
@@ -56,19 +52,23 @@ function fn_addco(){
 	fm.submit();
 }
 
-function fn_delco(articleNo){
-	 var form = document.createElement("form");
-	 form.removeAttribute("method");
-	 form.setAttribute("method", "post");
-	 form.setAttribute("action", "${contextPath}/club/delComment");
-     var articleNOInput = document.createElement("input");
-     articleNOInput.setAttribute("type","hidden");
-     articleNOInput.setAttribute("name","articleNo");
-     articleNOInput.setAttribute("value", articleNo);
-	 
-     form.appendChild(articleNOInput);
-     document.body.appendChild(form);
-     form.submit();
+function fn_delco(articleNo,articleId,articleTitle){
+	if(confirm("'"+articleTitle+"'"+" 글을 삭제하시겠습니까?")){
+	$.ajax({
+		url : "${contextPath}/club/delComment",
+		method : "POST",
+		data : {"articleNo" : articleNo,"articleId" : articleId},
+	success : function(jsonData){
+		var data = jsonData.result;
+			if(data >= 1){
+				alert("삭제되었습니다.");
+			}else if(data == 0){
+				alert("작성자만 삭제가 가능합니다.");
+			}
+		}
+})
+}else{	
+}
 }
 
 function fn_modmod(articleNo){
@@ -116,8 +116,8 @@ function fn_like(articleNo){
 
 </script>
 </head>
-<body><center>
-	<form action="${contextPath }/club/addComment" method="post" name="fm">
+<body>
+	<center><form action="${contextPath }/club/addComment" method="post" name="fm">
 	<h1>오늘의 이야기...</h1>
 	<table id="add">
 	<tr><td>제목 : </td><td><textarea rows="1" cols="100" name="articleTitle"></textarea><td rowspan="2"><input type="button" id="addbtn" value="입력" onclick="fn_addco()"></td></tr>
@@ -135,16 +135,17 @@ function fn_like(articleNo){
 	</c:forEach>
 	</form>
 	
-	<table id="list">
+	
+	<tr><td id="line" width="700"> </td></tr>
 	<c:forEach var="com" items="${commentList}">
-	<tr><td><input type="button" value="수정"  onclick="fn_modmod(${com.articleNo})"></td><td><input type="button" value="삭제"  onclick="fn_delco(${com.articleNo})"></td></tr>
-	<tr><td>제목 : ${com.articleTitle }</td><td> ${com.wdate }</td></tr>
-	<tr><td>작성자 : ${com.articleId }</td></tr>
-	<tr><td>내용 : ${com.articleContent }</td></tr>
-	<tr><td>좋아요 : ${com.articleLike }</td></tr>
-	<tr><td>싫어요 : ${com.articleHate }</td></tr>
-	<tr id='last'><td><input type="button" value="좋아요"  onclick="fn_like(${com.articleNo})"></td><td><input type="button" value="싫어요"  onclick=""></td></tr>
-	</c:forEach>
-	</table></center>
+	<table id="list">
+	<tr><td width="300"></td><td><input type="button" value="삭제"  onclick="fn_delco(${com.articleNo},'${com.articleId }','${com.articleTitle }')"></td></tr>
+	<tr><td><b>${com.articleTitle }</b></td><td> ${com.wdate }</td></tr>
+	<tr><td>${com.articleContent }</td><td>작성자 : <b>${com.articleId }</b></td></tr>
+	<tr><td width="300"></td><td>좋아요 : ${com.articleLike }</td></tr>
+	<tr><td width="300"></td><td><input type="button" value="좋아요"  onclick="fn_like(${com.articleNo})"></td></tr>
+	<tr><td id="line" width="700"> </td></tr>
+	</table>
+	</c:forEach></center>
 </body>
 </html>

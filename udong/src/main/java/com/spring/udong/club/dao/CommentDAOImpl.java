@@ -47,12 +47,6 @@ public class CommentDAOImpl implements CommentDAO{
 	}
 
 	@Override
-	public int dislike(int articleNo) throws DataAccessException {
-		int result = sqlSession.update("mapper.comment.dislike", articleNo);
-		return result;
-	}
-
-	@Override
 	public List modList(int articleNo) throws DataAccessException {
 		List modList = sqlSession.selectList("mapper.comment.modList",articleNo);
 		return modList;

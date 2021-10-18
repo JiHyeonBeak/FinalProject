@@ -12,8 +12,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
 <title>헤더</title>
+<style>
+	h1 {
+		font-weight: 300;
+	}
+
+</style>
 </head>
 <body>
 <table border=0  width="100%">

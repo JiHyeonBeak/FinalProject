@@ -23,8 +23,8 @@ public class BoardDAOImpl implements BoardDAO{
 
 	@Override
 	public int insertBoard(BoardVO boardVO) throws DataAccessException {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = sqlSession.insert("mapper.board.addBoard", boardVO);
+		return result;
 	}
 
 }

@@ -43,11 +43,6 @@ public class CommentServiceImpl implements CommentService{
 	}
 
 	@Override
-	public int dislike(int articleNo) throws Exception {
-		return commentDAO.dislike(articleNo);
-	}
-
-	@Override
 	public List<CommentVO> modList(int articleNo) throws Exception {
 		List modList = commentDAO.modList(articleNo);
 		return modList;

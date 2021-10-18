@@ -1,5 +1,6 @@
 package com.spring.udong.member.controller;
 
+import java.io.PrintWriter;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,10 +13,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.spring.udong.member.service.MemberService;
 import com.spring.udong.member.vo.MemberVO;
 
+@EnableWebMvc
 @Controller("MemberController")
 public class MemberControllerImpl implements MemberController{
 	@Autowired
@@ -30,19 +33,16 @@ public class MemberControllerImpl implements MemberController{
 	
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String join(Locale locale, Model model) {
-		System.out.println("조인컨트롤러 작동");
 		return "join";
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String update(Locale locale, Model model) {
-		System.out.println("수정컨트롤러 작동");
 		return "update";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Locale locale, Model model) {
-		System.out.println("로그인컨트롤러 작동");
 		return "login";
 	}
 	
@@ -54,7 +54,6 @@ public class MemberControllerImpl implements MemberController{
 		response.setCharacterEncoding("text/html;charset=utf-8");
 		int result = 0;
 		result = memberService.addMember(memberVO);
-		System.out.println("에드컨트롤러 작동");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("login");
 		return mav;
@@ -65,7 +64,6 @@ public class MemberControllerImpl implements MemberController{
 	public ModelAndView removeMember(String id, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
-		System.out.println("컨트롤러상 id: "+id);
 		memberService.removeMember(id);
 		ModelAndView mav = new ModelAndView();
 		HttpSession session = request.getSession();
@@ -97,7 +95,7 @@ public class MemberControllerImpl implements MemberController{
 		System.out.println("address:"+memberVO.getAddress());
 		memberService.updateMember(memberVO);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("main");
+		mav.setViewName("redirect:/club/clubList");
 		return mav;
 	}
 
@@ -116,7 +114,7 @@ public class MemberControllerImpl implements MemberController{
 			if(action != null) {
 				mav.setViewName("login");
 			}else {
-				mav.setViewName("main");
+				mav.setViewName("redirect:/club/clubList");
 			}
 		}else {
 			mav.setViewName("login");
@@ -144,6 +142,18 @@ public class MemberControllerImpl implements MemberController{
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("memberVO",memberVO);
 		mav.setViewName("update");
+		return mav;
+	}
+
+	@Override
+	@RequestMapping(value="/joinCheck",method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView joinCheck(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String id = request.getParameter("id");
+		memberVO.setId(id);
+		int result = memberService.joinCheck(memberVO);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("result",result);
+		mav.setViewName("redirect:/join");
 		return mav;
 	}
 	

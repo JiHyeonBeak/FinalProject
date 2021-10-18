@@ -11,7 +11,15 @@ public class BoardVO {
 	private String articleContent;
 	private Date articleDate;
 	private String articleId;
+	private int groupId;
 	
+	
+	public int getGroupId() {
+		return groupId;
+	}
+	public void setGroupId(int groupId) {
+		this.groupId = groupId;
+	}
 	public int getArticleNo() {
 		return articleNo;
 	}

@@ -27,9 +27,11 @@ function fn_mod(id){
     fm.appendChild(idMod);
     document.body.appendChild(fm);
     fm.submit();
+    alert('회원정보가 업데이트 되었습니다.');
 }
 
 function fn_del(id){
+	if(confirm("우동을 탈퇴하시겠습니까?")){
 	fm.removeAttribute("method");
 	fm.setAttribute("action", "${contextPath}/member/removeMember");
     var idDel = document.createElement("input");
@@ -40,6 +42,10 @@ function fn_del(id){
     fm.appendChild(idDel);
     document.body.appendChild(fm);
     fm.submit();
+	}
+	else{
+		
+	}
 }
 
 </script>
@@ -47,6 +53,25 @@ function fn_del(id){
    .text_center{
      text-align:center;
    }
+      #btn {
+		border : 0px;
+		border-radius: 22px;
+		background-color: #73a1eb;
+		width: 100px;
+		height:35px;
+		font-size: 20px;
+		color: #ffffff;
+		position: relative;
+		right:100px;
+		top:10px;
+		margin-bottom:70px;
+	}
+   
+   	input {
+		margin-top:5px;
+		border: 3px solid #73a1eb;
+		border-radius:20px;
+	}
 </style>
 </head>
 <body>
@@ -75,8 +100,8 @@ function fn_del(id){
 	    </tr>
 	    <tr>
 	       <td width="200"><p>&nbsp;</p></td>
-	       <td width="400"><input type="button" onclick="fn_mod('${id}')" value="수정하기">
-	       <input type="button" onclick="fn_del('${id}')" value="회원탈퇴"></td>
+	       <td width="400"><input type="button" onclick="fn_mod('${id}')" value="수정하기" id="btn">
+	       <input type="button" onclick="fn_del('${id}')" value="회원탈퇴" id="btn"></td>
 	    </tr>
 	</table>
 	</form>

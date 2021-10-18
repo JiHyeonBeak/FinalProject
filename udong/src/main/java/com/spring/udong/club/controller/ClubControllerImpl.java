@@ -1,13 +1,17 @@
 package com.spring.udong.club.controller;
 
+import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.spring.udong.club.service.BoardService;
 import com.spring.udong.club.service.ClubService;
 import com.spring.udong.club.service.CommentService;
+import com.spring.udong.club.vo.BoardVO;
 import com.spring.udong.club.vo.ClubVO;
 import com.spring.udong.club.vo.CommentVO;
 import com.spring.udong.club.vo.JoinVO;
@@ -37,6 +42,8 @@ public class ClubControllerImpl implements ClubController{
 	private JoinVO joinVO;
 	@Autowired
 	private CommentVO commentVO;
+	@Autowired
+	private BoardVO boardVO;
 	
 	@RequestMapping(value="/club/home", method=RequestMethod.GET)
 	public String clubHome(Locale locale, Model model) {
@@ -110,11 +117,21 @@ public class ClubControllerImpl implements ClubController{
 	public ModelAndView deleteComment(@RequestParam("articleNo") int articleNo, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
-		System.out.println("delcomment 실행");
-		commentService.deleteComment(articleNo);
-		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession();
+		memberVO = (MemberVO)session.getAttribute("member");
+		String seId = memberVO.getId();
+		String id = request.getParameter("articleId");
+		Map result = new HashMap();
+		if(seId.equals(id)) {
+			commentService.deleteComment(articleNo);
+			result.put("result", 1);
+		}else if(!seId.equals(id)){
+			result.put("result", 0);
+		}
+		ModelAndView mav = new ModelAndView("jsonView",result);
 		mav.setViewName("redirect:/club/listComment");
 		return mav;
+		
 	}
 
 	@Override
@@ -136,7 +153,6 @@ public class ClubControllerImpl implements ClubController{
 	public ModelAndView modComment(int articleNo, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
-		System.out.println("모드컨트롤러 상 no : "+articleNo);
 		commentService.modComment(articleNo);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/club/listComment");
@@ -145,22 +161,11 @@ public class ClubControllerImpl implements ClubController{
 
 	@Override
 	@RequestMapping(value="/club/like",method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView like(int articleNo, HttpServletRequest request, HttpServletResponse response)
+	public ModelAndView like(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
-		int like = commentService.like(articleNo);
-		System.out.println("vo상 like : "+commentVO.getArticleLike());
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/club/listComment");
-		return mav;
-	}
-
-	@Override
-	@RequestMapping(value="/club/dislike",method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView dislike(int articleNo, HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		request.setCharacterEncoding("utf-8");
-		commentService.dislike(articleNo);
+		int articleNo = Integer.parseInt(request.getParameter("articleNo"));
+		commentService.like(articleNo);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/club/listComment");
 		return mav;
@@ -184,7 +189,7 @@ public class ClubControllerImpl implements ClubController{
 		ModelAndView mav = new ModelAndView();
 		HttpSession session = request.getSession();
 		memberVO = (MemberVO)session.getAttribute("member");
-		int groupid = Integer.parseInt(request.getParameter("group_id"));
+		int groupid = Integer.parseInt(request.getParameter("groupId"));
 		joinVO.setGroup_id(groupid);
 		joinVO.setId(memberVO.getId());
 		clubService.joinClub(joinVO);
@@ -197,12 +202,40 @@ public class ClubControllerImpl implements ClubController{
 	@RequestMapping(value="/club/eachClubBoard", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView eachClubBoard(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		int groupId = Integer.parseInt(request.getParameter("group_id"));
+		int groupId = Integer.parseInt(request.getParameter("groupId"));
+		String groupName = request.getParameter("groupName");
 		joinVO.setGroup_id(groupId);
 		List boardList = boardService.listBoard(joinVO);
+		mav.addObject("groupName",groupName);
+		mav.addObject("groupId",groupId);
 		mav.addObject("boardList",boardList);
 		mav.setViewName("eachClub");
 		return mav;
+	}
+
+	@Override
+	@RequestMapping(value="/club/addBoard", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView addBoard(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		int groupId = Integer.parseInt(request.getParameter("groupId"));
+		mav.addObject("groupId",groupId);
+		boardVO.setGroupId(groupId);
+		HttpSession session = request.getSession();
+		memberVO = (MemberVO)session.getAttribute("member");
+		boardVO.setArticleId(memberVO.getId());
+		boardVO.setArticleTitle(request.getParameter("articleTitle"));
+		boardVO.setArticleContent(request.getParameter("articleContent"));
+		int result = boardService.addBoard(boardVO);
+		mav.setViewName("redirect:/club/eachClubBoard");
+		return mav;
+	}
+
+	@Override
+	public ModelAndView checkDelId(HttpServletRequest request, HttpServletResponse response) throws DataAccessException {
+		ModelAndView mav = new ModelAndView();
+		
+		
+		return null;
 	}
 
 

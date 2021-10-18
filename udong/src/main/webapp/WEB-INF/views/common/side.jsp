@@ -19,6 +19,11 @@
    display:inline;
    margin-right: 200px;
    }
+   
+   a{
+   	color:#044bb0;
+   	text-shadow: 
+   }
  </style>
   <meta charset="UTF-8">
   <title>사이드 메뉴</title>
@@ -29,7 +34,6 @@
 <body>	
 	<h1>
 		<a href="${contextPath}/main"  class="no-underline">메인  |</a>
-		<a href="${contextPath}/join"  class="no-underline">회원가입  |</a>
 		<a href="${contextPath}/club/add"  class="no-underline">동아리 개설  |</a>
 		<a href="${contextPath}/club/clubList"  class="no-underline">동아리 활동|</a>
 		<a href="${contextPath}/club/listComment"  class="no-underline">우리동네 게시판</a>
