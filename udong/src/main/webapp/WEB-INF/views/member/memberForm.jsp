@@ -12,24 +12,38 @@
 <title>회원 가입창</title>
 <link rel='stylesheet' href='../resources/font/font.css'>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script>
+<script type="text/javascript">
+var id = document.getElementById("id").value;
+var pwd = document.getElementById("pwd").value;
+var email = document.getElementById("email").value;
+var ph = document.getElementById("ph").value;
+var address = document.getElementById("address").value;
+var name = document.getElementById("name").value;
 
-function fn_chk(){
-	$.ajax({
-		url : "${contextPath}/joinCheck",
-		method : "POST",
-		data : {"id" : $("#id").val()},
-		success : function(data){
-			if(data >= 1){
-				alert("중복된 아이디입니다.");
-			}else if(data == 0){
-				alert("사용 가능한 아이디입니다.");
-			}
-		}
-})
+function fn_join(){
+	
+	if(id == null || id === ''){
+		alert(id);
+		alert("아이디를 입력해주세요.");
+	}else if(pwd == null || pwd ===''){
+		alert("비밀번호를 입력해주세요.");
+		pwd.focus();
+	}else if(name == null || name ===''){
+		alert("이름을 입력해주세요.");
+		name.focus();
+	}else if(address == null || address ===''){
+		alert("주소를 입력해주세요.");
+		address.focus();	
+	}else if(ph == null || ph ===''){
+		alert("핸드폰 번호를 입력해주세요.");
+		ph.focus();
+	}else if(email == null || email ===''){
+		alert("이메일을 입력해주세요.");
+		email.focus();
+	}else{
+		fm.submit();
+	}
 }
-
-
 </script>
 <style>
    .text_center{
@@ -71,37 +85,36 @@ function fn_chk(){
 </style>
 </head>
 <body>
-	<form method="post" action="${contextPath}/member/addMember">
+	<form method="post" action="${contextPath}/member/addMember" name="fm">
 	<h1  class="text_center">회원 가입</h1>
 	<table  align="center">
 	   <tr>
 	      <td width="100"><p align="right">아이디</td>
 	      <td width="200"><input type="text" name="id" id="id"></td>
-	      <td><input type="button" value="중복확인" id="chk" onclick="fn_chk()"></td>
 	   </tr>
 	   <tr>
 	      <td width="100"><p align="right">비밀번호</td>
-	      <td width="200"><input type="password" name="pwd"></td>
+	      <td width="200"><input type="password" name="pwd" id="pwd"></td>
 	    </tr>
 	    <tr>
 	       <td width="200"><p align="right">이름</td>
-	       <td width="200"><p><input type="text" name="name"></td>
+	       <td width="200"><p><input type="text" name="name" id="name"></td>
 	    </tr>
 	    <tr>
 	       <td width="200"><p align="right">주소</td>
-	       <td width="200"><p><input type="text" name="address"></td>
+	       <td width="200"><p><input type="text" name="address" id="address"></td>
 	    </tr>
 	    <tr>
 	       <td width="200"><p align="right">핸드폰번호</td>
-	       <td width="200"><p><input type="text" name="ph"></td>
+	       <td width="200"><p><input type="text" name="ph" id="ph"></td>
 	    </tr>
 	    <tr>
 	       <td width="200"><p align="right">이메일</td>
-	       <td width="300"><p><input type="text" name="email"></td>
+	       <td width="300"><p><input type="text" name="email" id="email"></td>
 	    </tr>
 	    <tr>
 	       <td width ="150"><p>&nbsp;</p></td>
-	       <td width="200"><input type="submit" value="가입하기" id='subm'></td>
+	       <td width="200"><input type="button" onclick="fn_join()" value="가입하기" id='subm'></td>
 	    </tr>
 	</table>
 	</form>

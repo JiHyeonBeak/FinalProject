@@ -42,6 +42,9 @@
 	#line{
 		border:1px solid #033894;
 		margin: 30px;
+	}
+	#in{
+		padding:10px;
 	}	
 
 </style>
@@ -54,22 +57,25 @@ function fn_addco(){
 
 function fn_delco(articleNo,articleId,articleTitle){
 	if(confirm("'"+articleTitle+"'"+" 글을 삭제하시겠습니까?")){
-	$.ajax({
-		url : "${contextPath}/club/delComment",
-		method : "POST",
-		data : {"articleNo" : articleNo,"articleId" : articleId},
-	success : function(jsonData){
-		var data = jsonData.result;
-			if(data >= 1){
-				alert("삭제되었습니다.");
-			}else if(data == 0){
-				alert("작성자만 삭제가 가능합니다.");
-			}
-		}
-})
-}else{	
-}
-}
+	 var form = document.createElement("form");
+	 form.removeAttribute("method");
+	 form.setAttribute("method", "post");
+	 form.setAttribute("action", "${contextPath}");
+     var articleNOInput = document.createElement("input");
+     articleNOInput.setAttribute("type","hidden");
+     articleNOInput.setAttribute("name","articleNo");
+     articleNOInput.setAttribute("value", articleNo);
+     
+     var articleIdInput = document.createElement("input");
+     articleIdInput.setAttribute("type","hidden");
+     articleIdInput.setAttribute("name","articleId");
+     articleIdInput.setAttribute("value", articleId);
+	 
+     form.appendChild(articleNOInput);
+     form.appendChild(articleIdInput);
+     document.body.appendChild(form);
+     form.submit();}
+	}
 
 function fn_modmod(articleNo){
 	var articleNOInput = document.createElement("input");
@@ -140,10 +146,10 @@ function fn_like(articleNo){
 	<c:forEach var="com" items="${commentList}">
 	<table id="list">
 	<tr><td width="300"></td><td><input type="button" value="삭제"  onclick="fn_delco(${com.articleNo},'${com.articleId }','${com.articleTitle }')"></td></tr>
-	<tr><td><b>${com.articleTitle }</b></td><td> ${com.wdate }</td></tr>
-	<tr><td>${com.articleContent }</td><td>작성자 : <b>${com.articleId }</b></td></tr>
-	<tr><td width="300"></td><td>좋아요 : ${com.articleLike }</td></tr>
-	<tr><td width="300"></td><td><input type="button" value="좋아요"  onclick="fn_like(${com.articleNo})"></td></tr>
+	<tr><td id="in"><b>${com.articleTitle }</b></td><td> ${com.wdate }</td></tr>
+	<tr><td id="in">${com.articleContent }</td><td>작성자 : <b>${com.articleId }</b></td></tr>
+	<tr><td width="300"></td></tr>
+	<tr><td width="300"></td><td></tr>
 	<tr><td id="line" width="700"> </td></tr>
 	</table>
 	</c:forEach></center>

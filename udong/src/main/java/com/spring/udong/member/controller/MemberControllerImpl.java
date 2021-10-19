@@ -145,19 +145,4 @@ public class MemberControllerImpl implements MemberController{
 		return mav;
 	}
 
-	@Override
-	@RequestMapping(value="/joinCheck",method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView joinCheck(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String id = request.getParameter("id");
-		memberVO.setId(id);
-		int result = memberService.joinCheck(memberVO);
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("result",result);
-		mav.setViewName("redirect:/join");
-		return mav;
-	}
-	
-	
-
-
 }

@@ -16,5 +16,4 @@ public interface MemberController {
 	public ModelAndView login(@ModelAttribute("memberVO") MemberVO memberVO, HttpServletRequest request, HttpServletResponse response)throws Exception;
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response)throws Exception;
 	public ModelAndView modInfo(HttpServletRequest request, HttpServletResponse response)throws Exception;
-	public ModelAndView joinCheck(HttpServletRequest request, HttpServletResponse response)throws Exception;
 }

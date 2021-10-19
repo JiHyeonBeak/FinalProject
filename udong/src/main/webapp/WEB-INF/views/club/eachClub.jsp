@@ -35,6 +35,10 @@
 	#intp{
 		font-size:20px;
 	}
+	#in{
+		padding:10px;
+	}
+	
 </style>
 <script type="text/javascript">
 </script>
@@ -52,8 +56,8 @@
 	<table>
 	<tr><td id="line"> </td></tr>
 	<c:forEach var="board" items="${boardList }">
-	<tr><td width="300">제목 : ${board.articleTitle }</td><td>작성자 :<b>${board.articleId }</b>&nbsp;</td><td> ${board.articleDate }</td></tr>
-	<tr><td width="500">내용 : ${board.articleContent }</td></tr>
+	<tr><td width="300" id="in"><b>${board.articleTitle }</b></td><td>작성자 :<b>${board.articleId }</b>&nbsp;</td><td> ${board.articleDate }</td></tr>
+	<tr><td width="500" id="in">${board.articleContent }</td></tr>
 	<tr><td width="700" id="line"> </td></tr>
 	</c:forEach>
 	</table></center>

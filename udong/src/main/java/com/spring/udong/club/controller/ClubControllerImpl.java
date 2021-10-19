@@ -4,7 +4,6 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.udong.club.service.BoardService;
@@ -111,24 +111,23 @@ public class ClubControllerImpl implements ClubController{
 			mav.setViewName("redirect:/club/clubList");
 			return mav;
 	}
-
+	
 	@Override
+	@ResponseBody
 	@RequestMapping(value="/club/delComment",method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView deleteComment(@RequestParam("articleNo") int articleNo, HttpServletRequest request, HttpServletResponse response)
+	public ModelAndView deleteComment(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		request.setCharacterEncoding("utf-8");
+		ModelAndView mav = new ModelAndView();
 		HttpSession session = request.getSession();
 		memberVO = (MemberVO)session.getAttribute("member");
 		String seId = memberVO.getId();
 		String id = request.getParameter("articleId");
-		Map result = new HashMap();
+		int articleNo = Integer.parseInt(request.getParameter("articleNo"));
 		if(seId.equals(id)) {
 			commentService.deleteComment(articleNo);
-			result.put("result", 1);
 		}else if(!seId.equals(id)){
-			result.put("result", 0);
 		}
-		ModelAndView mav = new ModelAndView("jsonView",result);
 		mav.setViewName("redirect:/club/listComment");
 		return mav;
 		

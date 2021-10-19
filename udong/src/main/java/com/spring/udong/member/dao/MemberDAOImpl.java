@@ -40,19 +40,5 @@ public class MemberDAOImpl implements MemberDAO{
 		return vo;
 	}
 
-	@Override
-	public int joinCheck(MemberVO memberVO) throws DataAccessException {
-		String id = memberVO.getId();
-		System.out.println(id);
-		int result = 0;
-		memberVO = sqlSession.selectOne("mapper.member.joinCheck",id);
-		if(memberVO != null) {
-			result = 0;
-		}else {
-			result = 1 ;
-		}
-		return result;
-	}
-
 
 }

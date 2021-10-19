@@ -55,7 +55,7 @@
     </insert>
     <select id="addClubBoard">
 		create table board${group_id} (
-    	article_no number primary key,
+    	articleNo number primary key,
     	article_title varchar2(1000),
     	article_content varchar2(4000),
     	article_date date default sysdate,

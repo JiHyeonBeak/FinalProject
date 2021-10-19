@@ -20,7 +20,7 @@
 		width:200px;
 		height:200px;
 		display: inline;
-		margin: 30px;
+		margin: 100px;
 	}
 	h2{
 		animation-name: h2;

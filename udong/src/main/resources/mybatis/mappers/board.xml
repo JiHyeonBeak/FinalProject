@@ -14,7 +14,7 @@
 	
 	<select id="boardList" resultMap="boardResult" parameterType="joinVO"  >
     <![CDATA[
-      SELECT * from board${group_id}
+      SELECT * from board${group_id} order by article_no desc
     ]]>
   	</select>
 	

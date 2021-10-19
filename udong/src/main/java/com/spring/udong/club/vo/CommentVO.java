@@ -10,7 +10,6 @@ public class CommentVO {
 	private String articleTitle;
 	private String articleContent;
 	private int articleLike;
-	private int articleHate;
 	private Date wdate;
 	private String articleId;
 	
@@ -50,12 +49,6 @@ public class CommentVO {
 	}
 	public void setArticleLike(int articleLike) {
 		this.articleLike = articleLike;
-	}
-	public int getArticleHate() {
-		return articleHate;
-	}
-	public void setArticleHate(int articleHate) {
-		this.articleHate = articleHate;
 	}
 	
 }
