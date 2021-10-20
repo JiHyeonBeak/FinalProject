@@ -141,7 +141,7 @@ function fn_like(articleNo){
 	</c:forEach>
 	</form>
 	
-	
+	<div id="infinite">
 	<tr><td id="line" width="700"> </td></tr>
 	<c:forEach var="com" items="${commentList}">
 	<table id="list">
@@ -152,6 +152,8 @@ function fn_like(articleNo){
 	<tr><td width="300"></td><td></tr>
 	<tr><td id="line" width="700"> </td></tr>
 	</table>
-	</c:forEach></center>
+	</c:forEach>
+	</div>
+	</center>
 </body>
 </html>

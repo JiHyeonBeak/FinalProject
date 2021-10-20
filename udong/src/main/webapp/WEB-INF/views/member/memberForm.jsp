@@ -13,8 +13,8 @@
 <link rel='stylesheet' href='../resources/font/font.css'>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
-var id = document.getElementById("id").value;
-var pwd = document.getElementById("pwd").value;
+var user_id = $('#user_id').val();
+var user_pwd = document.getElementById("user_pwd").value;
 var email = document.getElementById("email").value;
 var ph = document.getElementById("ph").value;
 var address = document.getElementById("address").value;
@@ -22,8 +22,8 @@ var name = document.getElementById("name").value;
 
 function fn_join(){
 	
-	if(id == null || id === ''){
-		alert(id);
+	if(user_id == null || user_id === ''){
+		alert(user_id);
 		alert("아이디를 입력해주세요.");
 	}else if(pwd == null || pwd ===''){
 		alert("비밀번호를 입력해주세요.");
@@ -90,11 +90,11 @@ function fn_join(){
 	<table  align="center">
 	   <tr>
 	      <td width="100"><p align="right">아이디</td>
-	      <td width="200"><input type="text" name="id" id="id"></td>
+	      <td width="200"><input type="text" name="id" id="user_id"></td>
 	   </tr>
 	   <tr>
 	      <td width="100"><p align="right">비밀번호</td>
-	      <td width="200"><input type="password" name="pwd" id="pwd"></td>
+	      <td width="200"><input type="password" name="pwd" id="user_pwd"></td>
 	    </tr>
 	    <tr>
 	       <td width="200"><p align="right">이름</td>
@@ -119,3 +119,5 @@ function fn_join(){
 	</table>
 	</form>
 </body>
+
+
