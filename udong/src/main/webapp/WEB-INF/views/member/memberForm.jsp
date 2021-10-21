@@ -11,40 +11,7 @@
 <meta charset="UTF-8">
 <title>회원 가입창</title>
 <link rel='stylesheet' href='../resources/font/font.css'>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script type="text/javascript">
-var user_id = $('#user_id').val();
-var user_pwd = document.getElementById("user_pwd").value;
-var email = document.getElementById("email").value;
-var ph = document.getElementById("ph").value;
-var address = document.getElementById("address").value;
-var name = document.getElementById("name").value;
 
-function fn_join(){
-	
-	if(user_id == null || user_id === ''){
-		alert(user_id);
-		alert("아이디를 입력해주세요.");
-	}else if(pwd == null || pwd ===''){
-		alert("비밀번호를 입력해주세요.");
-		pwd.focus();
-	}else if(name == null || name ===''){
-		alert("이름을 입력해주세요.");
-		name.focus();
-	}else if(address == null || address ===''){
-		alert("주소를 입력해주세요.");
-		address.focus();	
-	}else if(ph == null || ph ===''){
-		alert("핸드폰 번호를 입력해주세요.");
-		ph.focus();
-	}else if(email == null || email ===''){
-		alert("이메일을 입력해주세요.");
-		email.focus();
-	}else{
-		fm.submit();
-	}
-}
-</script>
 <style>
    .text_center{
      text-align:center;
@@ -114,7 +81,7 @@ function fn_join(){
 	    </tr>
 	    <tr>
 	       <td width ="150"><p>&nbsp;</p></td>
-	       <td width="200"><input type="button" onclick="fn_join()" value="가입하기" id='subm'></td>
+	       <td width="200"><input type="submit" value="가입하기" id='subm'></td>
 	    </tr>
 	</table>
 	</form>

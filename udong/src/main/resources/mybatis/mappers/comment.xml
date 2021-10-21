@@ -9,12 +9,22 @@
 		<result property="articleTitle" column="articleTitle" />
 		<result property="articleContent" column="articleContent" />
 		<result property="articleLike" column="articleLike" />
-		<result property="articleHate" column="articleHate" />
 	</resultMap> 
 	
 	<select id="commentList" resultMap="comResult"   >
     <![CDATA[
       SELECT * from udong_board order by articleNo desc
+    ]]>
+  </select>
+  
+  <select id="commentPaging" resultMap="comResult"   >
+    <![CDATA[
+      SELECT * from (
+      	select rownum as RN,
+      			articleNo,
+      			articleTitle,
+      			articleContent
+      			from (select * from udong_board order by articleNo desc)
     ]]>
   </select>
 	
