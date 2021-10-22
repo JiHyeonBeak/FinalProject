@@ -26,6 +26,7 @@ import com.spring.udong.club.vo.BoardVO;
 import com.spring.udong.club.vo.ClubVO;
 import com.spring.udong.club.vo.CommentVO;
 import com.spring.udong.club.vo.JoinVO;
+import com.spring.udong.club.vo.PageVO;
 import com.spring.udong.member.vo.MemberVO;
 
 @Controller("clubController")
@@ -44,6 +45,8 @@ public class ClubControllerImpl implements ClubController{
 	private CommentVO commentVO;
 	@Autowired
 	private BoardVO boardVO;
+	@Autowired
+	private PageVO pageVO;
 	
 	@RequestMapping(value="/club/home", method=RequestMethod.GET)
 	public String clubHome(Locale locale, Model model) {
@@ -66,10 +69,26 @@ public class ClubControllerImpl implements ClubController{
 	
 	@Override
 	@RequestMapping(value= "/club/listComment", method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView listComment(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView listComment(PageVO pageVO,HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String nowPage = request.getParameter("nowPage");
+		String perPage = request.getParameter("perPage");
+		
 		ModelAndView mav = new ModelAndView();
-		List commentList = commentService.listComment();
-		mav.addObject("commentList",commentList);
+		int total = commentService.countComment();
+		if(nowPage == null && perPage == null) {
+			nowPage = "1";
+			perPage = "5";
+		}else if(nowPage == null) {
+			nowPage = "1";
+		}else if(perPage == null) {
+			perPage = "5";
+		}
+		pageVO.setTotal(total);
+		pageVO.setNowPage(Integer.parseInt(nowPage));
+		pageVO.setPerPage(Integer.parseInt(perPage));
+		List commentList = commentService.listComment(pageVO);
+		mav.addObject("page",pageVO);
+		mav.addObject("viewAll",commentService.listComment(pageVO));
 		mav.setViewName("clubMain");
 		return mav;
 	}

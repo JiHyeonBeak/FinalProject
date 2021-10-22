@@ -8,6 +8,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.spring.udong.club.vo.CommentVO;
+import com.spring.udong.club.vo.PageVO;
 
 @Repository("commentDAO")
 public class CommentDAOImpl implements CommentDAO{
@@ -15,10 +16,12 @@ public class CommentDAOImpl implements CommentDAO{
 	private SqlSession sqlSession;
 	@Autowired
 	private CommentVO commentVO;
+	@Autowired
+	private PageVO pageVO;
 
 	@Override
-	public List CommentList() throws DataAccessException {
-		List<CommentVO> commentList = sqlSession.selectList("mapper.comment.commentList");
+	public List CommentList(PageVO pageVO) throws DataAccessException {
+		List<CommentVO> commentList = sqlSession.selectList("mapper.comment.commentPaging",pageVO);
 		return commentList;
 	}
 
@@ -50,6 +53,12 @@ public class CommentDAOImpl implements CommentDAO{
 	public List modList(int articleNo) throws DataAccessException {
 		List modList = sqlSession.selectList("mapper.comment.modList",articleNo);
 		return modList;
+	}
+
+	@Override
+	public int countComment() {
+		int result = sqlSession.selectOne("mapper.comment.countComment");
+		return result;
 	}
 
 }

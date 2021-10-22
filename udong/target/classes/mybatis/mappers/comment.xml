@@ -17,6 +17,13 @@
     ]]>
   </select>
   
+  <select id="countComment" resultType="int"   >
+    <![CDATA[
+      SELECT count(*) from udong_board
+      	
+    ]]>
+  </select>
+  
   <select id="commentPaging" resultMap="comResult"   >
     <![CDATA[
       SELECT * from (
@@ -24,7 +31,8 @@
       			articleNo,
       			articleTitle,
       			articleContent
-      			from (select * from udong_board order by articleNo desc)
+      			from (select * from udong_board order by articleNo desc))
+      			where RN between #{start} and #{end}
     ]]>
   </select>
 	

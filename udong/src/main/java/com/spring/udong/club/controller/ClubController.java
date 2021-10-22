@@ -11,10 +11,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.udong.club.vo.ClubVO;
+import com.spring.udong.club.vo.PageVO;
 
 public interface ClubController {
 	
-	public ModelAndView listComment(HttpServletRequest request, HttpServletResponse response)throws Exception;
+	public ModelAndView listComment(PageVO pageVO,HttpServletRequest request, HttpServletResponse response)throws Exception;
 	
 	public ModelAndView addComment(HttpServletRequest request,HttpServletResponse response )throws Exception;
 	

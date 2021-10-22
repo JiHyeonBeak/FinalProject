@@ -4,9 +4,45 @@ import org.springframework.stereotype.Component;
 
 @Component("pageVO")
 public class PageVO {
-	private int nowPage, startPage, endPage, total, perPage, lastPage, start, end;
+	private int nowPage,startPage,endPage,total,perPage,lastPage,start,end;
 	private int cntPage = 5;
 	
+	public PageVO(){
+		
+	}
+	
+	public PageVO(int total, int nowPage, int perPage) {
+		setNowPage(nowPage);
+		setPerPage(perPage);
+		setTotal(total);
+		calcLastPage(getTotal(),getPerPage());
+		calStartEndPage(getNowPage(),cntPage);
+		calsStartEnd(getNowPage(),getPerPage());
+	}
+	
+	private void calsStartEnd(int nowPage, int perPage) {
+		setEnd(nowPage * perPage);
+		setStart(getEnd() - perPage + 1);
+		
+	}
+
+	private void calStartEndPage(int nowPage, int cntPage) {
+		setEndPage(((int)Math.ceil((double)nowPage / (double)cntPage)) * cntPage);
+		if(getLastPage() < getEndPage()) {
+			setEndPage(getLastPage());
+		}
+		setStartPage(getEndPage() - cntPage + 1);
+		if(getStartPage() < 1) {
+			setStartPage(1);
+		}
+	}
+
+	private void calcLastPage(int total, int perPage) {
+		setLastPage((int)Math.ceil((double)total / (double) perPage));
+	}
+
+
+
 	public int getNowPage() {
 		return nowPage;
 	}

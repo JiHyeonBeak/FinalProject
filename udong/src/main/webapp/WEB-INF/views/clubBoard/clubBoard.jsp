@@ -154,6 +154,20 @@ function fn_like(articleNo){
 	</table>
 	</c:forEach>
 	</div>
+	
+	<c:forEach begin="${page.startPage }" end = "${page.endPage }" var="p">
+	<c:choose>
+		<c:when test="${p == page.nowPage }">
+			<b>${p }</b>
+		</c:when>
+		<c:when test="${p != page.nowPage }">
+			<a href="/club/listComment?nowPage=${page.endPage+1 }&perPage=${page.perPage}">${p }</a>
+		</c:when>
+	</c:choose>
+	</c:forEach>
+	<c:if test="${page.endPage != page.lastPage}">
+		<a href="/club/listComment?nowPage=${page.endPage+1 }&perPage=${page.perPage}">&gt;</a>
+	</c:if>
 	</center>
 </body>
 </html>
