@@ -143,7 +143,7 @@ function fn_like(articleNo){
 	
 	<div id="infinite">
 	<tr><td id="line" width="700"> </td></tr>
-	<c:forEach var="com" items="${commentList}">
+	<c:forEach var="com" items="${viewAll}">
 	<table id="list">
 	<tr><td width="300"></td><td><input type="button" value="삭제"  onclick="fn_delco(${com.articleNo},'${com.articleId }','${com.articleTitle }')"></td></tr>
 	<tr><td id="in"><b>${com.articleTitle }</b></td><td> ${com.wdate }</td></tr>

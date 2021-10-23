@@ -20,7 +20,6 @@
   <select id="countComment" resultType="int"   >
     <![CDATA[
       SELECT count(*) from udong_board
-      	
     ]]>
   </select>
   

@@ -22,6 +22,7 @@ public class CommentDAOImpl implements CommentDAO{
 	@Override
 	public List CommentList(PageVO pageVO) throws DataAccessException {
 		List<CommentVO> commentList = sqlSession.selectList("mapper.comment.commentPaging",pageVO);
+		System.out.println(commentList);
 		return commentList;
 	}
 
