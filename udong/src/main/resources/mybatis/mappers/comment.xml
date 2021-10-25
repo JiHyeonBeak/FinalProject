@@ -29,7 +29,8 @@
       	select rownum as RN,
       			articleNo,
       			articleTitle,
-      			articleContent
+      			articleContent,
+      			articleLike
       			from (select * from udong_board order by articleNo desc))
       			where RN between #{start} and #{end}
     ]]>

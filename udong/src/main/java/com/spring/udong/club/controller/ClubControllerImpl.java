@@ -87,9 +87,12 @@ public class ClubControllerImpl implements ClubController{
 		pageVO.setNowPage(Integer.parseInt(nowPage));
 		pageVO.setPerPage(Integer.parseInt(perPage));
 		System.out.println("토탈페이지 : "+pageVO.getTotal());
+		System.out.println("라스트페이지 : "+pageVO.getLastPage());
+		System.out.println("스타트 페이지 : "+pageVO.getStartPage());
+		System.out.println("엔드페이지 : "+pageVO.getEndPage());
 		System.out.println("펄페이지 : "+pageVO.getPerPage());
 		System.out.println("나우페이지 : "+pageVO.getNowPage());
-		System.out.println("엔드페이지 : "+pageVO.getEnd());
+		System.out.println("엔드 : "+pageVO.getEnd());
 		System.out.println("시작페이지 : "+pageVO.getStart());
 		List commentList = commentService.listComment(pageVO);
 		mav.addObject("page",pageVO);

@@ -147,8 +147,8 @@ function fn_like(articleNo){
 	<table id="list">
 	<tr><td width="300"></td><td><input type="button" value="삭제"  onclick="fn_delco(${com.articleNo},'${com.articleId }','${com.articleTitle }')"></td></tr>
 	<tr><td id="in"><b>${com.articleTitle }</b></td><td> ${com.wdate }</td></tr>
-	<tr><td id="in">${com.articleContent }</td><td>작성자 : <b>${com.articleId }</b></td></tr>
-	<tr><td width="300"></td></tr>
+	<tr><td id="in">${com.articleContent }</td><td>infi작성자 : <b>${com.articleId }</b></td></tr>
+	<tr><td width="300"></td><td>${com.articleLike }</td><td><input type="button" onclick="fn_like(${com.articleNo})" value="좋아요"></td></tr>
 	<tr><td width="300"></td><td></tr>
 	<tr><td id="line" width="700"> </td></tr>
 	</table>
