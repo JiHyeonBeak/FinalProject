@@ -29,7 +29,7 @@
 		</a>
      </td>
      <td>
-       <h1><font size=30>우리동네 동아리</font></h1>
+       <h1><b><font size=30>우리동네 동아리</font></b></h1>
      </td>
      
      <td>
