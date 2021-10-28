@@ -5,7 +5,7 @@
 
 <mapper namespace="mapper.board">
 	<resultMap id="boardResult" type="boardVO">
-		<result property="articleNo" column="article_no" />
+		<result property="articleNo" column="articleno" />
 		<result property="articleTitle" column="article_title" />
 		<result property="articleContent" column="article_content" />
 		<result property="articleDate" column="article_date" />
@@ -14,7 +14,7 @@
 	
 	<select id="boardList" resultMap="boardResult" parameterType="joinVO"  >
     <![CDATA[
-      SELECT * from board${group_id} order by article_no desc
+      SELECT * from board${group_id} order by articleno desc
     ]]>
   	</select>
 	
@@ -23,7 +23,7 @@
   			select udong_eaboard_seq.nextval from dual
   		</selectKey>
 		<![CDATA[
-		 insert into board${groupId}(article_no,article_title,article_content,article_id)
+		 insert into board${groupId}(articleno,article_title,article_content,article_id)
 		 values(#{articleNo}, #{articleTitle},#{articleContent},#{articleId})
 		]]>      
 	</insert>

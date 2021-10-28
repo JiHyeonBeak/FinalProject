@@ -17,7 +17,6 @@
 <body>
 <p> 우리동네 동아리, 우동</p> 
 <p> 이젠아카데미 구리캠퍼스 자바프로그래밍 최종 프로젝트</p>
-<p> 깃허브: <a href="https://github.com/users/JiHyeonBeak/projects/1">Team 2</a></p>
 
 </body>
 </html>
