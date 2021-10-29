@@ -13,6 +13,7 @@ public class LogInInterceptor extends HandlerInterceptorAdapter{
 		try {
 			HttpSession session = request.getSession();
 			Object obj = session.getAttribute("member");
+			System.out.println("인터셉터에서 : "+obj);
 			if(obj == null) {
 			response.sendRedirect("/udong/login");
 			return false; //false로 설정해야 컨트롤러의 요청url로 이동하지 않음

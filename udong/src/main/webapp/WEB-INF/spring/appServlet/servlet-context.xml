@@ -38,10 +38,11 @@
 	
    	<mvc:interceptors>
     	<mvc:interceptor>
-    		<mvc:mapping path="/**/*"/>
-	      <mvc:exclude-mapping path="/main"/>
-	      <mvc:exclude-mapping path="/join"/>
-	      <mvc:exclude-mapping path="/login"/>
+    		<mvc:mapping path="/**/listComment"/>
+    		<mvc:mapping path="/**/add*"/>
+    		<mvc:mapping path="/**/eachClubBoard"/>
+    		<mvc:mapping path="/**/update"/>
+    		
 	   <beans:bean class="com.spring.udong.common.interceptor.LogInInterceptor" />
 	</mvc:interceptor>
 	</mvc:interceptors>

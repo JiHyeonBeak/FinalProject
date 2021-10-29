@@ -88,11 +88,6 @@ public class MemberControllerImpl implements MemberController{
 		memberVO.setAddress(address);
 		memberVO.setEmail(email);
 		memberVO.setPh(ph);
-		System.out.println("id:"+memberVO.getId());
-		System.out.println("email:"+memberVO.getEmail());
-		System.out.println("pwd:"+memberVO.getPwd());
-		System.out.println("ph:"+memberVO.getPh());
-		System.out.println("address:"+memberVO.getAddress());
 		memberService.updateMember(memberVO);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/club/clubList");
